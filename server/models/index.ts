@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import { DATABASE_CONNECTION_ERROR } from '../custom_messages/errors';
 
 async function connect() {
   // add environment variables
@@ -12,7 +13,7 @@ async function connect() {
     await mongoose.connect(`mongodb://localhost:${port}/${name}`);
   } catch (err) {
     console.error(err);
-    throw new Error('Failed to connect to database');
+    throw new Error(DATABASE_CONNECTION_ERROR);
   }
 }
 

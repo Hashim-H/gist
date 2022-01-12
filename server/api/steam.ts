@@ -1,13 +1,14 @@
 import dotenv from 'dotenv';
 import axios from 'axios';
-import  CustomParams from '../typescript/interfaces/CustomParams';
+import CustomParams from '../typescript/interfaces/CustomParams';
+import { FAILED_API_CALL, MISSING_ENVIRONMENT_VARIABLE } from '../custom_messages/errors';
 
 // add envvironment variables
 dotenv.config();
 const { API_KEY, API_USER_ID } = process.env;
 
 // if environment variables do not exist, throw error
-if (!API_KEY || !API_USER_ID) throw new Error('Missing environment variable');
+if (!API_KEY || !API_USER_ID) throw new Error(MISSING_ENVIRONMENT_VARIABLE);
 
 
 async function getFactory(customPath: String, customParams?: CustomParams) {
@@ -25,7 +26,7 @@ async function getFactory(customPath: String, customParams?: CustomParams) {
     return res;
   } catch (err) {
     console.error(err);
-    throw new Error('Failed API call');
+    throw new Error(FAILED_API_CALL);
   }
 }
 
