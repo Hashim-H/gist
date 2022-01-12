@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import axios from 'axios';
-import { CustomParams } from '../typescript/interfaces';
+import  CustomParams from '../typescript/interfaces/CustomParams';
 
 // add envvironment variables
 dotenv.config();

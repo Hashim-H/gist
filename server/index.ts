@@ -1,8 +1,6 @@
 import dotenv from 'dotenv';
 import express from 'express';
-
 import database from './models';
-
 import router from './custom_middleware/router';
 
 // add environment variables
