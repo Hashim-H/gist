@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.ts"
+    "start": "nodemon index.ts --config nodemon.json"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.24.0",
     "dotenv": "^11.0.0",
     "express": "^4.17.2"
   },

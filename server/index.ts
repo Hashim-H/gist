@@ -14,4 +14,9 @@ app.use(router);
 
 // start server
 const PORT = process.env.SERVER_PORT || 3000;
-app.listen(PORT, () => console.log(`server: http://localhost:${PORT}`));
+
+try {
+  app.listen(PORT, () => console.log(`server: http://localhost:${PORT}`));
+} catch (err) {
+  console.error(err);
+}
