@@ -1,6 +1,7 @@
 import steam from '../api/steam';
+import { Request, Response } from 'express';
 
-async function getUserData(_, res) {
+async function getUserData(_: Request, res: Response) {
   try {
     // get player data
     const user = await steam.getPlayerSummaries();
@@ -13,12 +14,11 @@ async function getUserData(_, res) {
   }
 }
 
-async function getGameData(_, res) {
+async function getGameData(_: Request, res: Response) {
   try {
     // get games as array
     const games = await steam.getOwnedGames();
 
-    console.log(games);
     res.status(200)
     res.send(games);
   } catch (err) {
@@ -30,4 +30,4 @@ async function getGameData(_, res) {
 export default {
   getUserData,
   getGameData
-}
+};

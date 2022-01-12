@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import axios from 'axios';
+import { CustomParams } from '../typescript/interfaces';
 
 // add envvironment variables
 dotenv.config();
@@ -9,7 +10,7 @@ const { API_KEY, API_USER_ID } = process.env;
 if (!API_KEY || !API_USER_ID) throw new Error('Missing environment variable');
 
 
-async function getFactory(customPath, customParams?) {
+async function getFactory(customPath: String, customParams?: CustomParams) {
   // constants
   const BASE_URL = 'http://api.steampowered.com/';
   const BASE_PARAMS = { key: API_KEY };
@@ -19,8 +20,13 @@ async function getFactory(customPath, customParams?) {
   const params = Object.assign(BASE_PARAMS, customParams);
 
   // send request
-  const res = await axios.get(url, { params });
-  return res;
+  try {
+    const res = await axios.get(url, { params });
+    return res;
+  } catch (err) {
+    console.error(err);
+    throw new Error('Failed API call');
+  }
 }
 
 async function getPlayerSummaries() {
@@ -51,4 +57,4 @@ async function getOwnedGames() {
 export default {
   getOwnedGames,
   getPlayerSummaries
-}
+};

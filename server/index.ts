@@ -1,6 +1,8 @@
 import dotenv from 'dotenv';
 import express from 'express';
 
+import database from './models';
+
 import router from './custom_middleware/router';
 
 // add environment variables
@@ -13,10 +15,11 @@ const app = express();
 app.use(router);
 
 // start server
-const PORT = process.env.SERVER_PORT || 3000;
+const port = process.env.SERVER_PORT || 3000;
 
 try {
-  app.listen(PORT, () => console.log(`server: http://localhost:${PORT}`));
+  database.connect();
+  app.listen(port, () => console.log(`server: http://localhost:${port}`));
 } catch (err) {
   console.error(err);
 }
