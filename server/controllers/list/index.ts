@@ -5,7 +5,9 @@ import { apiUserId } from '../../environment';
 async function getLists(_: Request, res: Response) {
   try {
     const lists = await ListModel.find({ steamid: apiUserId });
-    return lists;
+
+    res.status(200);
+    res.send(lists);
   } catch (err) {
     console.error(err);
     res.sendStatus(500);
