@@ -20,7 +20,7 @@ async function getGameData(_: Request, res: Response) {
     }
   } catch (err) {
     console.error(err);
-    res.sendStatus(500); // internal server error
+    res.sendStatus(500);
   }
 
   res.status(200)

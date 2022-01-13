@@ -1,5 +1,5 @@
 import UserModel from '../../models/User';
-import { apiUserId } from '../../bootstrap/environment';
+import { apiUserId } from '../../environment';
 import steam from '../../api/steam';
 
 export async function getUserFromDatabase() {

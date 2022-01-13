@@ -8,6 +8,9 @@ const router = Router();
 router.get('/', (_, res) => res.send('hi'));
 router.get('/steam/user', user.getUserData);
 router.get('/steam/games', game.getGameData);
-router.get('/lists', list.getListData);
+
+// lists
+router.get('/lists', list.getLists);
+router.post('/lists', list.postList);
 
 export default router;

@@ -1,54 +1,38 @@
 import { Request, Response } from 'express';
 import ListModel from '../../models/List';
-import { apiUserId } from '../../bootstrap/environment';
+import { apiUserId } from '../../environment';
 
-async function getListData(_: Request, res: Response) {
+async function getLists(_: Request, res: Response) {
   try {
     const lists = await ListModel.find({ steamid: apiUserId });
+    return lists;
   } catch (err) {
     console.error(err);
+    res.sendStatus(500);
   }
 }
 
-export default { getListData };
+async function postList(req: Request, res: Response) {
+  try {
+    // get data from request payload
+    const { steamid, games } = req.body;
+    console.log(steamid, games);
+    if (steamid && games) {
+      // create new list document
+      const list = await ListModel.create({ steamid, games });
 
-// export async function getUserFromDatabase() {
-//   try {
-//     const user = await UserModel.find({ steamid: API_USER_ID });
-//     return user;
-//   } catch (err) {
-//     console.error(err);
-//     throw new Error(FAILED_DATABASE_OPERATION);
-//   }
-// }
+      res.status(201);
+      res.send(list);
+    } else {
+      res.sendStatus(400) // bad request
+    }
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(500);
+  }
+}
 
-
-// import { getUserFromDatabase, getUserFromAPI } from './helper';
-
-// let timeout: Number;
-
-// async function getUserData(_: Request, res: Response) {
-//   let user;
-//   try {
-//     // check if API call has been made recently
-//     if (
-//       timeout &&
-//       timeout > Date.now()
-//     ) {
-//       user = await getUserFromDatabase();
-//     } else {
-//       user = await getUserFromAPI();
-
-//       // set 30 min timeout (to reduce unecessary calls)
-//       timeout = Date.now() + (1000 * 60 * 30);
-//     }
-//   } catch (err) {
-//     console.error(err);
-//     res.sendStatus(500); // internal server error
-//   }
-
-//   res.status(200)
-//   res.send(user);
-// }
-
-// export default { getUserData };
+export default {
+  getLists,
+  postList
+};

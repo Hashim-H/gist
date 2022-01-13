@@ -1,10 +1,6 @@
 import { model, Schema } from 'mongoose';
 
 const ListSchema = new Schema({
-  listid: {
-    type: Number,
-    required: true
-  },
   steamid: {
     type: Number,
     required: true

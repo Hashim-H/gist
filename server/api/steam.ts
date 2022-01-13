@@ -1,6 +1,6 @@
 import axios from 'axios';
 import CustomParams from '../interfaces/CustomParams';
-import { apiKey, apiUserId } from '../bootstrap/environment';
+import { apiKey, apiUserId } from '../environment';
 
 async function getFactory(customPath: String, customParams?: CustomParams) {
   // constants

@@ -1,12 +1,13 @@
 import express from 'express';
 import router from './middleware/router';
-import database from './bootstrap/database';
-import { serverPort as port } from './bootstrap/environment';
+import database from './models';
+import { serverPort as port } from './environment';
 
 // create server
 const app = express();
 
 // middleware
+app.use(express.json());
 app.use(router);
 
 try {
