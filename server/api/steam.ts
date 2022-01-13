@@ -1,8 +1,11 @@
 import axios from 'axios';
-import CustomParams from '../interfaces/CustomParams';
 import { apiKey, apiUserId } from '../environment';
 
-async function getFactory(customPath: String, customParams?: CustomParams) {
+interface AxiosParams {
+  [index: string]: any
+};
+
+async function getFactory(customPath: String, customParams?: AxiosParams) {
   // constants
   const BASE_URL = 'http://api.steampowered.com/';
   const BASE_PARAMS = { key: apiKey };

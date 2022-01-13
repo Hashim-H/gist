@@ -1,5 +1,4 @@
 import GameModel from '../../models/Game';
-import Game from '../../interfaces/Game';
 import steam from '../../api/steam';
 
 export async function getGamesFromDatabase() {
@@ -8,6 +7,13 @@ export async function getGamesFromDatabase() {
 }
 
 export async function getGamesFromAPI() {
+  interface Game {
+    appid: Number,
+    name: String,
+    img_icon_url: String,
+    img_logo_url: String
+  };
+
   // get data from API
   let apiData = await steam.getOwnedGames();
 
