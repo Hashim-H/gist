@@ -1,19 +1,13 @@
-import dotenv from 'dotenv';
 import express from 'express';
-import database from './models';
-import router from './custom_middleware/router';
-
-// add environment variables
-dotenv.config();
+import router from './middleware/router';
+import database from './bootstrap/database';
+import { serverPort as port } from './bootstrap/environment';
 
 // create server
 const app = express();
 
 // middleware
 app.use(router);
-
-// start server
-const port = process.env.SERVER_PORT || 3000;
 
 try {
   database.connect();

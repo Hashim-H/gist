@@ -1,16 +1,10 @@
 import GameModel from '../../models/Game';
-import Game from '../../typescript/interfaces/Game';
+import Game from '../../interfaces/Game';
 import steam from '../../api/steam';
-import { FAILED_DATABASE_OPERATION } from '../../custom_messages/errors';
 
 export async function getGamesFromDatabase() {
-  try {
-    const games = await GameModel.find();
-    return games;
-  } catch (err) {
-    console.error(err);
-    throw new Error(FAILED_DATABASE_OPERATION);
-  }
+  const games = await GameModel.find();
+  return games;
 }
 
 export async function getGamesFromAPI() {
@@ -27,20 +21,10 @@ export async function getGamesFromAPI() {
     const options = { upsert: true }; // creates the document if it does not exist
 
     // update database
-    try {
-      await GameModel.findOneAndUpdate(filter, update, options);
-    } catch (err) {
-      console.error(err);
-      throw new Error(FAILED_DATABASE_OPERATION);
-    }
+    await GameModel.findOneAndUpdate(filter, update, options);
   });
 
   // get updated documents
-  try {
-    const games = await GameModel.find();
-    return games;
-  } catch (err) {
-    console.error(err);
-    throw new Error(FAILED_DATABASE_OPERATION);
-  }
+  const games = await GameModel.find();
+  return games;
 }

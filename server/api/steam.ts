@@ -1,37 +1,23 @@
-import dotenv from 'dotenv';
 import axios from 'axios';
-import CustomParams from '../typescript/interfaces/CustomParams';
-import { FAILED_API_CALL, MISSING_ENVIRONMENT_VARIABLE } from '../custom_messages/errors';
-
-// add envvironment variables
-dotenv.config();
-const { API_KEY, API_USER_ID } = process.env;
-
-// if environment variables do not exist, throw error
-if (!API_KEY || !API_USER_ID) throw new Error(MISSING_ENVIRONMENT_VARIABLE);
-
+import CustomParams from '../interfaces/CustomParams';
+import { apiKey, apiUserId } from '../bootstrap/environment';
 
 async function getFactory(customPath: String, customParams?: CustomParams) {
   // constants
   const BASE_URL = 'http://api.steampowered.com/';
-  const BASE_PARAMS = { key: API_KEY };
+  const BASE_PARAMS = { key: apiKey };
 
   // construct request
   const url = BASE_URL + customPath;
   const params = Object.assign(BASE_PARAMS, customParams);
 
   // send request
-  try {
-    const res = await axios.get(url, { params });
-    return res;
-  } catch (err) {
-    console.error(err);
-    throw new Error(FAILED_API_CALL);
-  }
+  const res = await axios.get(url, { params });
+  return res;
 }
 
 async function getPlayerSummaries() {
-  const customParams = { steamids: API_USER_ID };
+  const customParams = { steamids: apiUserId };
 
   // fetch data
   const res = await getFactory('ISteamUser/GetPlayerSummaries/v0002/', customParams);
@@ -43,7 +29,7 @@ async function getPlayerSummaries() {
 
 async function getOwnedGames() {
   const customParams = {
-    steamid: API_USER_ID,
+    steamid: apiUserId,
     include_appinfo: true
   };
 
