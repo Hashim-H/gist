@@ -17,11 +17,10 @@ async function getLists(_: Request, res: Response) {
 async function postList(req: Request, res: Response) {
   try {
     // get data from request payload
-    const { steamid, games } = req.body;
-    console.log(steamid, games);
-    if (steamid && games) {
+    const { name, steamid, games } = req.body;
+    if (name && steamid && games) {
       // create new list document
-      const list = await ListModel.create({ steamid, games });
+      const list = await ListModel.create({ name, steamid, games });
 
       res.status(201);
       res.send(list);
