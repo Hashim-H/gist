@@ -1,24 +1,20 @@
 .nav {
   width: 200px;
-  /* min-width: 200px; */
 }
 
-.nav__ul {
+.nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
-
-.nav__ul__li {
   list-style-type: none;
 }
 
-.nav__ul__li__a {
+.nav__link {
   color: var(--steam-color-5);
   text-decoration: none;
 }
 
-.nav__ul__li__a:hover {
+.nav__link:hover {
   cursor: pointer;
   color: white;
 }

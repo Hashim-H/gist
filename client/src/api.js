@@ -10,3 +10,12 @@ export async function getLists() {
     console.error(err);
   }
 }
+
+export async function getListById(id) {
+  try {
+    const res = await axios.get(BASE_URL + `/lists/${id}`);
+    return res.data;
+  } catch (err) {
+    console.error(err);
+  }
+}

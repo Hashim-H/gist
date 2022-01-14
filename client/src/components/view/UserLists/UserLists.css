@@ -1,0 +1,7 @@
+.list__item__link {
+  text-decoration: none;
+}
+
+.list__item__link:active {
+  color: var(--steam-color-4);
+}

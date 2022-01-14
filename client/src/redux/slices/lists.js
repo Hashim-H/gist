@@ -6,7 +6,6 @@ const initialState = {
   lists: []
 };
 
-//
 export const getLists = createAsyncThunk(
   'lists/getLists',
   async () => {

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = false;
+const initialState = true;
 
 export const authenticatedSlice = createSlice({
   name: 'authenticated',

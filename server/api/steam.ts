@@ -44,7 +44,25 @@ async function getOwnedGames() {
   return games;
 }
 
+async function getOwnedGamesById(ids: Number[]) {
+  const customParams = {
+    input_json: {
+      steamid: apiUserId,
+      include_appinfo: true,
+      appids_filter: ids
+    }
+  };
+
+  // fetch data
+  const res = await getFactory('IPlayerService/GetOwnedGames/v0001/', customParams);
+
+  // extract necessary data
+  const { games } = res.data.response;
+  return games;
+}
+
 export default {
+  getPlayerSummaries,
   getOwnedGames,
-  getPlayerSummaries
+  getOwnedGamesById
 };

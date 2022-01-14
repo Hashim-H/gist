@@ -11,6 +11,7 @@ router.get('/steam/games', game.getGameData);
 
 // lists
 router.get('/lists', list.getLists);
+router.get('/lists/:id', list.getListById);
 router.post('/lists', list.postList);
 
 export default router;

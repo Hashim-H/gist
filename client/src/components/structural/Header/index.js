@@ -1,7 +1,7 @@
 import './Header.css';
 import { useSelector } from 'react-redux';
 import { selectAuthenticated } from '../../../redux/slices/authenticated';
-import Nav from '../../feature/nav';
+import Nav from '../../feature/Nav';
 
 export default function Header() {
   const authenticated = useSelector(selectAuthenticated);

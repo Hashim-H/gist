@@ -1,0 +1,10 @@
+.spinner {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner__message {
+  color: var(--steam-color-5);
+}
