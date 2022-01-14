@@ -1,0 +1,11 @@
+.main {
+  padding: 1rem 5rem;
+
+  display: flex;
+  justify-content: center;
+}
+
+.main__content__container {
+  width: 80vw;
+  max-width: 1024px;
+}

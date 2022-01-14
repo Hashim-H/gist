@@ -1,0 +1,24 @@
+.nav {
+  width: 200px;
+  /* min-width: 200px; */
+}
+
+.nav__ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.nav__ul__li {
+  list-style-type: none;
+}
+
+.nav__ul__li__a {
+  color: var(--steam-color-5);
+  text-decoration: none;
+}
+
+.nav__ul__li__a:hover {
+  cursor: pointer;
+  color: white;
+}

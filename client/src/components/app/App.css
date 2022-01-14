@@ -1,0 +1,37 @@
+/* poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400;1,500&display=swap');
+
+/* global */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Poppins, sans-serif;
+}
+
+:root {
+  --steam-color-1: #171A21;
+  --steam-color-2: #66C0F4;
+  --steam-color-3: #1B2838;
+  --steam-color-4: #2A475E;
+  --steam-color-5: #C7D5E0;
+  --font-large: 30px;
+  --font-medium: 20px;
+  --font-small: 10px;
+}
+
+h1 {
+  font-size: var(--font-large);
+  font-weight: 400;
+  color: var(--steam-color-5);
+}
+
+.app {
+  /* dimensions */
+  height: 100vh;
+  width: 100vw;
+
+  /* color */
+  background-color: var(--steam-color-3);
+}
+
