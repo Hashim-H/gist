@@ -13,10 +13,10 @@ const ListSchema = new Schema({
     appid: Number,
     comments: String
   }],
-  // ranked: {
-  //   type: Boolean,
-  //   required: true
-  // },
+  ordered: {
+    type: Boolean,
+    required: true
+  },
   // draft: {
   //   type: Boolean,
   //   required: true

@@ -63,6 +63,6 @@ async function getOwnedGamesById(ids: Number[]) {
 
 export default {
   getPlayerSummaries,
-  getOwnedGames,
-  getOwnedGamesById
+  getOwnedGamesById,
+  getOwnedGames
 };

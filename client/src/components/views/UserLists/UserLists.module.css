@@ -1,0 +1,26 @@
+.header {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.editButton {
+  color: var(--steam-color-5);
+  font-size: var(--font-medium);
+}
+
+.editButton:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.link {
+  color: var(--steam-color-3);
+  font-size: var(--font-normal);
+  text-decoration: none;
+}
+
+.link:hover {
+  background-color: white;
+}

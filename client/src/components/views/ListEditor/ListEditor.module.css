@@ -1,0 +1,75 @@
+.header {
+  margin-bottom: 1.5rem;
+}
+
+.listHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.listNameLabel {
+  margin-right: 1rem;
+  color: var(--steam-color-5);
+  font-size: var(--font-medium);
+  font-weight: 300;
+}
+
+.listName {
+  display: inline;
+  background: transparent;
+  border: none;
+  color: var(--steam-color-2);
+  flex-grow: 1;
+}
+
+.addGameButton {
+  color: var(--steam-color-5);
+  font-size: var(--font-medium);
+}
+
+.addGameButton:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.flexContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  padding-right: 1rem;
+}
+
+.arrowButton {
+  color: var(--steam-color-3);
+  font-size: var(--font-medium);
+}
+
+.arrowButton:hover {
+  color: var(--steam-color-2);
+  cursor: pointer;
+}
+
+.name {
+  padding-left: 1rem;
+  flex-grow: 1;
+}
+
+.deleteButton {
+  color: var(--steam-color-3);
+  font-size: var(--font-medium);
+}
+
+.deleteButton:hover {
+  color: darkred;
+  cursor: pointer;
+}
+

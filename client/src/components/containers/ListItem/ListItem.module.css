@@ -1,0 +1,12 @@
+.listItem {
+  margin-bottom: 1rem;
+  padding: 2rem;
+  background-color: var(--steam-color-5);
+  border-radius: 10px;
+  font-weight: 500;
+  list-style-type: none;
+}
+
+.listItem:hover {
+  background-color: white;
+}

@@ -1,0 +1,33 @@
+
+.header {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.editButton {
+  color: var(--steam-color-5);
+  font-size: var(--font-medium);
+}
+
+.editButton:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.wrapper {
+ cursor: pointer;
+}
+
+.flexContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.gameName {
+  padding-left: 1rem;
+  color: var(--steam-color-3);
+  font-size: var(--font-normal);
+}

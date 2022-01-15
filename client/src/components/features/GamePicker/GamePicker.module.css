@@ -1,0 +1,71 @@
+.modalHeader {
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.heading {
+  font-size: var(--font-medium)
+}
+
+.doneButton {
+  padding: .1rem 1rem;
+  border-radius: 10px;
+  background-color: var(--steam-color-5);
+  color: var(--steam-color-3);
+  font-weight: 600;
+}
+
+.doneButton:hover {
+  background-color: var(--steam-color-2);
+  cursor: pointer;
+}
+
+.listItemContainer:hover {
+  cursor: pointer;
+}
+
+.listOuter {
+  background-color: var(--steam-color-3);
+  border-radius: 10px;;
+  padding: 10px;
+
+}
+
+.listInner {
+  height: 400px;
+  overflow: hidden;
+  overflow-y: scroll;
+  background-color: var(--steam-color-3);
+  border-radius: 10px;
+  padding: 0 10px 0 0;
+}
+
+.flexContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.name {
+  padding-left: 1rem;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+  margin: 10px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--steam-color-5);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: white;
+}

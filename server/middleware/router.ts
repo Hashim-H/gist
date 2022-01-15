@@ -7,7 +7,7 @@ const router = Router();
 
 router.get('/', (_, res) => res.send('hi'));
 router.get('/steam/user', user.getUserData);
-router.get('/steam/games', game.getGameData);
+router.get('/games', game.getGameData);
 
 // lists
 router.get('/lists', list.getLists);

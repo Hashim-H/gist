@@ -49,3 +49,17 @@ h4 {
   font-size: var(--font-normal);
 }
 
+.header {
+  padding: 1rem 5rem;
+  background: var(--steam-color-1);
+  display: flex;
+  justify-content: center;
+}
+
+.headerContainer {
+  width: 80vw;
+  max-width: 1024px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

@@ -6,7 +6,9 @@ import steam from '../../api/steam';
 
 async function getLists(_: Request, res: Response) {
   try {
+    // get lists from database
     const lists = await ListModel.find({ steamid: apiUserId });
+
     res.status(200);
     res.send(lists);
   } catch (err) {
@@ -46,10 +48,15 @@ async function getListById(req: Request, res: Response) {
 async function postList(req: Request, res: Response) {
   try {
     // get data from request payload
-    const { name, steamid, games } = req.body;
-    if (name && steamid && games) {
+    const { name, games, ordered } = req.body;
+    if (name && games && ordered) {
       // create new list document
-      const list = await ListModel.create({ name, steamid, games });
+      const list = await ListModel.create({
+        steamid: apiUserId,
+        name,
+        games,
+        ordered
+      });
 
       res.status(201);
       res.send(list);

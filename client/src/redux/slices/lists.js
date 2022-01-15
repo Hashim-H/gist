@@ -1,11 +1,15 @@
+// libraries
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getLists as getListsFromAPI } from '../../api';
+
+// api
+import { getLists as getListsFromAPI } from '../../APIService';
 
 const initialState = {
   loading: false,
   lists: []
 };
 
+// async reducer
 export const getLists = createAsyncThunk(
   'lists/getLists',
   async () => {
@@ -14,6 +18,7 @@ export const getLists = createAsyncThunk(
   }
 );
 
+// slice
 export const listsSlice = createSlice({
   name: 'lists',
   initialState,
@@ -28,6 +33,8 @@ export const listsSlice = createSlice({
   }
 });
 
+// selector
 export const selectLists = state => state.lists;
 
+// reducer
 export default listsSlice.reducer;
