@@ -77,7 +77,7 @@ export default function GameList() {
       <div className={styles.header}>
         <h2>{list.name}</h2>
         <Link to={`/listeditor/${list._id}`}>
-          <IoPencil className={styles.editButton} />
+          {list.name ? <IoPencil className={styles.editButton} /> : null}
         </Link>
       </div>
       {renderBody()}
