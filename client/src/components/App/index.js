@@ -15,6 +15,7 @@ import Nav from '../features/Nav';
 import UserLists from '../views/UserLists';
 import GameList from '../views/GameList';
 import ListEditor from '../views/ListEditor';
+import FriendsList from '../views/FriendsList';
 
 export default function App() {
 
@@ -42,6 +43,7 @@ export default function App() {
         <Route path="/list/:id" element={<GameList />} />
         <Route path="/listeditor/" element={<ListEditor />} />
         <Route path="/listeditor/:id" element={<ListEditor />} />
+        <Route path="/friends" element={<FriendsList />} />
       </Routes>
     </Router>
   );

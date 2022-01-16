@@ -47,6 +47,15 @@ export async function deleteList(id) {
   }
 }
 
+export async function getFriends() {
+  try {
+    const res = await axios.get(BASE_URL + '/friends');
+    return res.data;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 export function constructImageURL(appid, hash) {
   return `http://media.steampowered.com/steamcommunity/public/images/apps/${appid}/${hash}.jpg`;
 }
@@ -61,6 +70,7 @@ const APIService = {
   getOwnedGames,
   putList,
   deleteList,
+  getFriends,
   constructImageURL,
   constructStoreURL
 };

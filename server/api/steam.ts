@@ -61,8 +61,28 @@ async function getOwnedGamesById(ids: Number[]) {
   return games;
 }
 
+async function getFriendsList() {
+  const customParams = {
+    steamid: apiUserId,
+    relationship: 'all',
+  };
+
+  const res = await getFactory('ISteamUser/GetFriendList/v0001/', customParams);
+  const steamids = res.data.friendslist.friends.map((friend: any) => friend.steamid);
+  return steamids;
+}
+
+async function getPlayerSummariesArray(friendsList: Number[]) {
+  const friendsListString = friendsList.join(',');
+  const customParams = { steamids: friendsListString };
+  const res = await getFactory('ISteamUser/GetPlayerSummaries/v0002/', customParams);
+  return res.data.response.players;
+}
+
 export default {
   getPlayerSummaries,
   getOwnedGamesById,
-  getOwnedGames
+  getOwnedGames,
+  getFriendsList,
+  getPlayerSummariesArray
 };

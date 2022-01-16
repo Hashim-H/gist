@@ -2,6 +2,7 @@ import { Router } from 'express';
 import game from '../controllers/game';
 import user from '../controllers/user';
 import list from '../controllers/list';
+import friends from '../controllers/friends';
 
 const router = Router();
 
@@ -14,5 +15,8 @@ router.get('/lists', list.getLists);
 router.get('/lists/:id', list.getListById);
 router.put('/lists', list.putList);
 router.delete('/lists/:id', list.deleteList);
+
+// friends
+router.get('/friends', friends.getUserData);
 
 export default router;

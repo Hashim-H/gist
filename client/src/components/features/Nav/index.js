@@ -12,6 +12,9 @@ export default function Nav() {
           <Link className={styles.navLink} to={"/"}>My Lists</Link>
         </li>
         <li>
+          <Link className={styles.navLink} to={"/friends"}>Friends</Link>
+        </li>
+        <li>
           <Link to={"/"} className={styles.navLink}>Logout</Link>
         </li>
       </ul>
