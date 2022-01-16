@@ -1,0 +1,48 @@
+.heading {
+  font-size: var(--font-medium);
+  margin-bottom: 1rem;
+}
+
+.saveButton {
+  padding: .5rem 1rem;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--steam-color-5);
+  color: var(--steam-color-3);
+  font-weight: 600;
+}
+
+.saveButton:hover {
+  background-color: var(--steam-color-2);
+  cursor: pointer;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.formOption {
+  width: 100%;
+}
+
+.label {
+  color: var(--steam-color-5);
+  margin-bottom: .5rem;
+}
+
+.input {
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  height: 2.5rem;
+  width: 80%;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+}
+
+.checkbox {
+  margin-bottom: 2rem;
+}

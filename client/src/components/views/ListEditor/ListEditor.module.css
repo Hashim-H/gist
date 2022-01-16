@@ -10,27 +10,25 @@
   margin-bottom: 1.5rem;
 }
 
-.listNameLabel {
-  margin-right: 1rem;
-  color: var(--steam-color-5);
-  font-size: var(--font-medium);
-  font-weight: 300;
+.listNameSpan {
+  color: var(--steam-color-2);
 }
 
 .listName {
-  display: inline;
-  background: transparent;
-  border: none;
-  color: var(--steam-color-2);
+  color: var(--steam-color-5);
+  font-size: var(--font-medium);
+  font-weight: 300;
   flex-grow: 1;
 }
 
-.addGameButton {
+.optionButton {
+  display: inline;
+  margin-left: .5rem;
   color: var(--steam-color-5);
   font-size: var(--font-medium);
 }
 
-.addGameButton:hover {
+.optionButton:hover {
   cursor: pointer;
   color: white;
 }

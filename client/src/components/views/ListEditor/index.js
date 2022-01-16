@@ -4,7 +4,7 @@ import styles from './ListEditor.module.css';
 // libraries
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { IoTrashBin, IoCaretDown, IoCaretUp } from 'react-icons/io5';
+import { IoTrashBin, IoCaretDown, IoCaretUp, IoEllipsisHorizontalCircleSharp } from 'react-icons/io5';
 import { IoIosAddCircle } from 'react-icons/io';
 
 // api
@@ -17,12 +17,14 @@ import ListItem from '../../containers/ListItem';
 import GameImage from '../../features/GameImage';
 import Spinner from '../../features/Spinner';
 import GamePicker from '../../features/GamePicker';
+import ListOptionForm from '../../features/ListOptionForm';
 
 export default function ListEditor() {
   // state
   const [list, setList] = useState({});
   const [fetched, setFetched] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
+  const [gamePickerOpen, setGamePickerOpen] = useState(false);
+  const [listOptionFormOpen, setListOptionFormOpen] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
@@ -44,14 +46,16 @@ export default function ListEditor() {
     }
   }, [id]);
 
-  const addGame = (game) => {
+
+  //button handler functions
+  const addGame = game => {
     setList({
       ...list,
       games: [...list.games, game]
     });
   }
 
-  const deleteGame = (targetGame) => {
+  const deleteGame = targetGame => {
     // filter games
     const newList = [...list.games].filter(game => {
       return game.appid !== targetGame.appid;
@@ -64,27 +68,97 @@ export default function ListEditor() {
     });
   };
 
+  const upRankGame = rank => {
+    // swap games
+    const newList = [...list.games];
+    [newList[rank - 1], newList[rank]] = [newList[rank], newList[rank - 1]];
+
+    // update state
+    setList({
+      ...list,
+      games: newList
+    });
+  };
+
+  const downRankGame = rank => {
+    // swap games
+    const newList = [...list.games];
+    [newList[rank + 1], newList[rank]] = [newList[rank], newList[rank + 1]];
+
+    // update state
+    setList({
+      ...list,
+      games: newList
+    });
+  };
+
+  const saveListOptions = ({ name, ordered }) => {
+    setList({
+      ...list,
+      name: name,
+      ordered: ordered
+    });
+  };
+
 
   // render helper functions
   const renderGamePicker = () => {
-    if (modalOpen) {
+    if (gamePickerOpen) {
       return (
         <GamePicker
-          setModalOpen={setModalOpen}
+          setGamePickerOpen={setGamePickerOpen}
           listGames={list.games}
           addGame={addGame} />
       );
     }
   };
 
-  const renderRankButtons = () => {
-    if (list.ordered) {
+  const renderListOptionForm = () => {
+    if (listOptionFormOpen) {
       return (
-        <div className={styles.buttonContainer}>
-          <IoCaretUp className={styles.arrowButton} />
-          <IoCaretDown className={styles.arrowButton} />
-        </div>
+        <ListOptionForm
+          setListOptionFormOpen={setListOptionFormOpen}
+          list={list}
+          saveListOptions={saveListOptions} />
       );
+    }
+  };
+
+  const renderRankButtons = game => {
+    if (!list.ordered) return null;
+
+    const rank = list.games.findIndex(listGame => listGame.appid === game.appid);
+
+    switch (rank) {
+      case 0:
+        return (
+          <div className={styles.buttonContainer}>
+            <IoCaretDown
+              className={styles.arrowButton}
+              onClick={() => downRankGame(rank)} />
+          </div>
+        );
+
+      case list.games.length - 1:
+        return (
+          <div className={styles.buttonContainer}>
+            <IoCaretUp
+              className={styles.arrowButton}
+              onClick={() => upRankGame(rank)} />
+          </div>
+        );
+
+      default:
+        return (
+          <div className={styles.buttonContainer}>
+            <IoCaretUp
+              className={styles.arrowButton}
+              onClick={() => upRankGame(rank)} />
+            <IoCaretDown
+              className={styles.arrowButton}
+              onClick={() => downRankGame(rank)} />
+          </div>
+        );
     }
   };
 
@@ -93,7 +167,7 @@ export default function ListEditor() {
       return (
         <ListItem uniqueKey={game.appid}>
           <div className={styles.flexContainer}>
-            {renderRankButtons()}
+            {renderRankButtons(game)}
             <GameImage
               appid={game.appid}
               hash={game.img_logo_url} />
@@ -115,19 +189,22 @@ export default function ListEditor() {
     return (
       <>
         <div className={styles.listHeader}>
-          <div>
-            <span className={styles.listNameLabel}>List Name:</span>
-            <h3 className={styles.listName}>{renderListName()}</h3>
-          </div>
+          <h3 className={styles.listName}>
+            List Name: <span className={styles.listNameSpan}>{renderListName()}</span>
+          </h3>
           <IoIosAddCircle
-            className={styles.addGameButton}
-            onClick={() => setModalOpen(true)} />
+            className={styles.optionButton}
+            onClick={() => setGamePickerOpen(true)} />
+          <IoEllipsisHorizontalCircleSharp
+            className={styles.optionButton}
+            onClick={() => setListOptionFormOpen(true)}/>
         </div>
         <ListContainer
           ordered={list.ordered}>
           {renderListItems()}
         </ListContainer>
         {renderGamePicker()}
+        {renderListOptionForm()}
       </>
     );
   };
@@ -143,21 +220,3 @@ export default function ListEditor() {
     </Container>
   );
 }
-
-
-
-
-/*
-  // add list button
-  // ?list options button - opens modal to show list options
-
-  // change list name button - change the state of the list name input to not disabled
-  // add game button - opens modal to choose game
-  // modal has list of games - clicking any will add them to the list
-  // modal has done button
-
-  // ?each game has move up and down buttons
-  // ?if list option is set to ranked, rank will show
-  // each game has remove button
-
-*/

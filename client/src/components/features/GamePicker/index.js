@@ -14,7 +14,7 @@ import ListContainer from '../../containers/ListContainer';
 import ListItem from '../../containers/ListItem';
 import GameImage from '../GameImage';
 
-export default function GamePicker({ setModalOpen, listGames, addGame }) {
+export default function GamePicker({ setGamePickerOpen, listGames, addGame }) {
   // state
   const [ownedGames, setOwnedGames] = useState([]);
 
@@ -66,11 +66,11 @@ export default function GamePicker({ setModalOpen, listGames, addGame }) {
 
   // render
   return (
-    <Modal setModalOpen={setModalOpen}>
+    <Modal setModalOpen={setGamePickerOpen}>
       <div className={styles.modalHeader}>
         <h3 className={styles.heading}>Pick games</h3>
         <button className={styles.doneButton}
-          onClick={() => setModalOpen(false)}>Done</button>
+          onClick={() => setGamePickerOpen(false)}>Done</button>
       </div>
       <div className={styles.listOuter}>
         <div className={styles.listInner}>

@@ -10,6 +10,7 @@
 
 .doneButton {
   padding: .1rem 1rem;
+  border: none;
   border-radius: 10px;
   background-color: var(--steam-color-5);
   color: var(--steam-color-3);
