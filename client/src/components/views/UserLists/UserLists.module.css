@@ -5,12 +5,12 @@
   justify-content: space-between;
 }
 
-.editButton {
+.addButton {
   color: var(--steam-color-5);
-  font-size: var(--font-medium);
+  font-size: var(--font-large);
 }
 
-.editButton:hover {
+.addButton:hover {
   color: white;
   cursor: pointer;
 }

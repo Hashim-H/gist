@@ -202,7 +202,7 @@ export default function ListEditor() {
   const renderListName = () => list.name ? list.name : 'Unnamed List';
 
   const renderBody = () => {
-    if (!fetched) return <Spinner />;
+    if (id && !fetched) return <Spinner />;
 
     return (
       <>

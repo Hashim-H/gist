@@ -60,18 +60,22 @@ async function putList(req: Request, res: Response) {
   try {
     // construct update
     const { _id, name, games, ordered } = req.body;
-    const filter = { _id };
     const update = {
       steamid: apiUserId,
       name,
       games,
       ordered
     };
-    const options = { upsert: true };
 
     // update database
-    await ListModel.findOneAndUpdate(filter, update, options);
-    res.sendStatus(201);
+    if (_id) {
+      const filter = { _id };
+      await ListModel.findOneAndUpdate(filter, update);
+      res.sendStatus(200);
+    } else {
+      ListModel.create(update);
+      res.sendStatus(201);
+    }
   } catch (err) {
     console.error(err);
     res.sendStatus(500);

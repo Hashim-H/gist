@@ -4,7 +4,7 @@ import styles from './UserLists.module.css';
 // libraries
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { IoPencil } from 'react-icons/io5';
+import { IoIosAddCircle } from 'react-icons/io';
 
 // store
 import { selectLists } from '../../../redux/slices/lists';
@@ -45,7 +45,10 @@ export default function UserLists() {
     <Container>
       <div className={styles.header}>
         <h2>My Lists</h2>
-        <IoPencil className={styles.editButton} />
+        <Link
+          to={'/listeditor'}>
+          <IoIosAddCircle className={styles.addButton} />
+        </Link>
       </div>
       {renderBody()}
     </Container>
