@@ -118,6 +118,12 @@ export default function ListEditor() {
     navigate('/');
   };
 
+  const deleteList = async () => {
+    await APIService.deleteList(list._id);
+    dispatch(getLists());
+    navigate('/');
+  }
+
 
   // render helper functions
   const renderGamePicker = () => {
@@ -181,7 +187,7 @@ export default function ListEditor() {
   };
 
   const renderListItems = () => {
-    return list.games.map(game => {
+    return list.games.map((game, index) => {
       return (
         <ListItem uniqueKey={game.appid}>
           <div className={styles.flexContainer}>
@@ -189,7 +195,9 @@ export default function ListEditor() {
             <GameImage
               appid={game.appid}
               hash={game.img_logo_url} />
-            <h4 className={styles.name}>{game.name}</h4>
+            <h4 className={styles.name}>
+              <span className={styles.rank}>{list.ordered ? `#${index + 1} ` : null}</span>
+              {game.name}</h4>
             <IoTrashBin
               className={styles.deleteButton}
               onClick={() => deleteGame(game)} />
@@ -218,7 +226,8 @@ export default function ListEditor() {
             onClick={() => setListOptionFormOpen(true)} />
           <IoSave
             className={styles.optionButton}
-            onClick={saveList}/>
+            onClick={saveList} />
+          {list._id ? <IoTrashBin className={styles.optionButton} onClick={deleteList}/> : null}
         </div>
         <ListContainer
           ordered={list.ordered}>

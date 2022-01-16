@@ -38,6 +38,15 @@ export async function putList(payload) {
   }
 }
 
+export async function deleteList(id) {
+  try {
+    const res = await axios.delete(BASE_URL + `/lists/${id}`);
+    return res.data;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 export function constructImageURL(appid, hash) {
   return `http://media.steampowered.com/steamcommunity/public/images/apps/${appid}/${hash}.jpg`;
 }
@@ -51,6 +60,7 @@ const APIService = {
   getListById,
   getOwnedGames,
   putList,
+  deleteList,
   constructImageURL,
   constructStoreURL
 };

@@ -87,8 +87,20 @@ async function putList(req: Request, res: Response) {
   }
 }
 
+async function deleteList(req: Request, res: Response) {
+  try {
+    const filter = { _id: req.params.id };
+    await ListModel.deleteOne(filter);
+    res.sendStatus(200);
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(500);
+  }
+}
+
 export default {
   getLists,
   getListById,
-  putList
+  putList,
+  deleteList
 };

@@ -1,10 +1,6 @@
-.spinner {
+.spinnerContainer {
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.spinnerMessage {
-  color: var(--steam-color-5);
 }
