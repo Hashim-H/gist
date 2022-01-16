@@ -68,6 +68,7 @@
 
 ::-webkit-scrollbar-track {
   border-radius: 10px;
+  background-color: var(--steam-color-1);
 }
 
 ::-webkit-scrollbar-thumb {

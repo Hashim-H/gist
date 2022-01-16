@@ -1,0 +1,23 @@
+.header {
+  margin-bottom: 1.5rem;
+}
+
+.flexContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.listItem {
+  font-size: var(--font-normal);
+  text-decoration: none;
+}
+
+.listItem:hover {
+  cursor: pointer;
+}
+
+.name {
+  color: var(--steam-color-3);
+  margin: 1rem;
+}

@@ -17,7 +17,7 @@
 
 .link {
   color: var(--steam-color-3);
-  font-size: var(--font-normal);
+  font-size: var(--font-medium);
   text-decoration: none;
 }
 

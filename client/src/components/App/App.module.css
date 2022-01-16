@@ -50,6 +50,9 @@ h4 {
 }
 
 .header {
+  position: sticky;
+  top: 0px;
+  width: 100vw;
   padding: 1rem 5rem;
   background: var(--steam-color-1);
   display: flex;

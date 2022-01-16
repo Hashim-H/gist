@@ -16,6 +16,7 @@ import UserLists from '../views/UserLists';
 import GameList from '../views/GameList';
 import ListEditor from '../views/ListEditor';
 import FriendsList from '../views/FriendsList';
+import FriendLists from '../views/FriendLists';
 
 export default function App() {
 
@@ -44,6 +45,7 @@ export default function App() {
         <Route path="/listeditor/" element={<ListEditor />} />
         <Route path="/listeditor/:id" element={<ListEditor />} />
         <Route path="/friends" element={<FriendsList />} />
+        <Route path="/friends/:id" element={<FriendLists />} />
       </Routes>
     </Router>
   );

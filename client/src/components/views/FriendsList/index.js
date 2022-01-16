@@ -3,10 +3,17 @@ import styles from './FriendsList.module.css';
 
 // libraries
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
+// api
+import APIService from '../../../APIService';
 
 // components
 import Container from '../../containers/Container';
-import APIService from '../../../APIService';
+import Spinner from '../../features/Spinner';
+import ListContainer from '../../containers/ListContainer';
+import ListItem from '../../containers/ListItem';
+import ProfileImage from '../../features/ProfileImage';
 
 export default function FriendsList() {
 
@@ -17,61 +24,37 @@ export default function FriendsList() {
       const apiData = await APIService.getFriends();
       setFriends(apiData);
     })();
-  });
+  },[]);
 
+  const renderBody = () => {
+    if (!friends.length) return <Spinner />;
 
-    //   (async () => {
-    //   const data = await getListById(id);
-    //   console.log(data);
-    //   setList(data);
-    // })();
-  // request friend data
-  // create list of friends
-  //
-
-  const renderBody = () => null;
-
-
+    return (
+      <ListContainer>
+        {
+          friends.map(friend => {
+            return (
+              <Link
+                className={styles.listItem}
+                to={`/friends/${friend.steamid}`}>
+                <ListItem uniqueKey={friend.steamid}>
+                  <div className={styles.flexContainer}>
+                    <ProfileImage url={friend.avatarmedium} />
+                    <h3 className={styles.name}>{friend.personaname}</h3>
+                  </div>
+                </ListItem>
+              </Link>
+            );
+          })
+        }
+      </ListContainer>
+    );
+  };
 
   return (
     <Container>
-      <h2>Friends</h2>
+      <h2 className={styles.header}>Friends</h2>
       {renderBody()}
     </Container>
-);
+  );
 }
-
-
-    // <Container>
-    //   <div className={styles.header}>
-    //     <h2>My Lists</h2>
-    //     <Link
-    //       to={'/listeditor'}>
-    //       <IoIosAddCircle className={styles.addButton} />
-    //     </Link>
-    //   </div>
-    //   {renderBody()}
-    // </Container>
-
-    // state
-  // const listsState = useSelector(selectLists);
-
-
-  // // render helper functions
-  // const renderListItems = () => {
-  //   return listsState.lists.map(list => {
-  //     return (
-  //       <Link
-  //         className={styles.link}
-  //         key={list._id}
-  //         to={`/list/${list._id}`}>
-  //           <ListItem>{list.name}</ListItem>
-  //       </Link>
-  //     );
-  //   })
-  // };
-
-  // const renderBody = () => {
-  //   if (listsState.loading) return <Spinner />;
-  //   return <ListContainer>{renderListItems()}</ListContainer>;
-  // };
