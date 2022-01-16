@@ -21,8 +21,12 @@
   cursor: pointer;
 }
 
-.listItemContainer:hover {
+.allowed:hover {
   cursor: pointer;
+}
+
+.notAllowed:hover {
+  cursor: not-allowed;
 }
 
 .listOuter {
@@ -49,6 +53,11 @@
 
 .name {
   padding-left: 1rem;
+}
+
+.added {
+  color: green;
+  font-size: var(--font-medium);
 }
 
 ::-webkit-scrollbar {

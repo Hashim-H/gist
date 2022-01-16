@@ -3,6 +3,7 @@ import styles from './GamePicker.module.css';
 
 // libraries
 import { useState, useEffect } from 'react';
+import { IoCheckmark } from 'react-icons/io5';
 
 // api
 import APIService from '../../../APIService';
@@ -13,7 +14,7 @@ import ListContainer from '../../containers/ListContainer';
 import ListItem from '../../containers/ListItem';
 import GameImage from '../GameImage';
 
-export default function GamePicker({ setModalOpen, addGame }) {
+export default function GamePicker({ setModalOpen, listGames, addGame }) {
   // state
   const [ownedGames, setOwnedGames] = useState([]);
 
@@ -36,16 +37,30 @@ export default function GamePicker({ setModalOpen, addGame }) {
   // render helper functions
   const renderListItem = () => {
     return ownedGames.map(game => {
-      return (
-        <div className={styles.listItemContainer}>
-          <ListItem uniqueKey={game.appid} onClick={() => handleClick(game)}>
-            <div className={styles.flexContainer}>
-              <GameImage appid={game.appid} hash={game.img_logo_url} />
-              <h4 className={styles.name}>{game.name}</h4>
-            </div>
-          </ListItem>
-        </div>
-      );
+      if (listGames.find(listGame => listGame.appid === game.appid)) {
+        return (
+          <div className={styles.notAllowed}>
+            <ListItem uniqueKey={game.appid}>
+              <div className={styles.flexContainer}>
+                <GameImage appid={game.appid} hash={game.img_logo_url} />
+                <h4 className={styles.name}>{game.name}</h4>
+                <IoCheckmark className={styles.added} />
+              </div>
+            </ListItem>
+          </div>
+        );
+      } else {
+        return (
+          <div className={styles.allowed}>
+            <ListItem uniqueKey={game.appid} onClick={() => handleClick(game)}>
+              <div className={styles.flexContainer}>
+                <GameImage appid={game.appid} hash={game.img_logo_url} />
+                <h4 className={styles.name}>{game.name}</h4>
+              </div>
+            </ListItem>
+          </div>
+        );
+      }
     });
   };
 

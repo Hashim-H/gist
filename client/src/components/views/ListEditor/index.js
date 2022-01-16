@@ -52,10 +52,12 @@ export default function ListEditor() {
   }
 
   const deleteGame = (targetGame) => {
+    // filter games
     const newList = [...list.games].filter(game => {
       return game.appid !== targetGame.appid;
     });
 
+    // update state
     setList({
       ...list,
       games: newList
@@ -69,7 +71,7 @@ export default function ListEditor() {
       return (
         <GamePicker
           setModalOpen={setModalOpen}
-
+          listGames={list.games}
           addGame={addGame} />
       );
     }
