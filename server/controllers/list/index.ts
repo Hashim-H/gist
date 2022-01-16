@@ -54,8 +54,13 @@ async function putList(req: Request, res: Response) {
   if (
     !body.hasOwnProperty('name') ||
     !body.hasOwnProperty('games') ||
-    !body.hasOwnProperty('ordered')
-  ) res.sendStatus(400);
+    !body.hasOwnProperty('ordered') ||
+    !body.name ||
+    !body.games.length
+  ) {
+    res.sendStatus(400);
+    return;
+  }
 
   try {
     // construct update
