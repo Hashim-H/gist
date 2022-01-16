@@ -18,5 +18,6 @@ router.delete('/lists/:id', list.deleteList);
 
 // friends
 router.get('/friends', friends.getUserData);
+router.get('/friends/:id/lists', friends.getFriendListsByUserId)
 
 export default router;
