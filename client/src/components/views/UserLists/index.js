@@ -24,7 +24,8 @@ export default function UserLists() {
   const renderListItems = () => {
     return listsState.lists.map(list => {
       return (
-        <Link className={styles.link}
+        <Link
+          className={styles.link}
           key={list._id}
           to={`/list/${list._id}`}>
             <ListItem>{list.name}</ListItem>
@@ -38,7 +39,7 @@ export default function UserLists() {
     return <ListContainer>{renderListItems()}</ListContainer>;
   };
 
-  
+
   // render
   return (
     <Container>

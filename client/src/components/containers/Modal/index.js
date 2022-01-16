@@ -6,10 +6,14 @@ export default function Modal({ setModalOpen, children }) {
 
   return (
     <>
-      <div className={styles.background} onClick={closeModal} />
+      <div
+        className={styles.background}
+        onClick={closeModal} />
       <div className={styles.modal} >
         <div className={styles.header}>
-          <IoIosCloseCircle className={styles.closeButton} onClick={closeModal}/>
+          <IoIosCloseCircle
+            className={styles.closeButton}
+            onClick={closeModal} />
         </div>
         {children}
       </div>

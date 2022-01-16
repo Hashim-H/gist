@@ -40,7 +40,9 @@ export default function GameList() {
           key={game.appid}>
           <ListItem onClick={() => setModalOpen(true)}>
             <div className={styles.flexContainer}>
-              <GameImage appid={game.appid} hash={game.img_logo_url} />
+              <GameImage
+                appid={game.appid}
+                hash={game.img_logo_url} />
               <h3 className={styles.gameName}>{game.name}</h3>
             </div>
           </ListItem>
@@ -58,7 +60,7 @@ export default function GameList() {
     if (modalOpen) return <Modal setModalOpen={setModalOpen}></Modal>
   };
 
-  
+
   // render
   return (
     <Container>

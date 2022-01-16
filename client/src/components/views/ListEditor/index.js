@@ -52,17 +52,13 @@ export default function ListEditor() {
   }
 
   const deleteGame = (targetGame) => {
-    // create copy
-    const gamesCopy = [...list.games];
+    const newList = [...list.games].filter(game => {
+      return game.appid !== targetGame.appid;
+    });
 
-    // remove target game from copy
-    const index = gamesCopy.indexOf(game => game.appid === targetGame.appid);
-    gamesCopy.splice(index, 1);
-
-    // update state
     setList({
       ...list,
-      games: gamesCopy
+      games: newList
     });
   };
 
@@ -71,7 +67,9 @@ export default function ListEditor() {
   const renderGamePicker = () => {
     if (modalOpen) {
       return (
-        <GamePicker setModalOpen={setModalOpen}
+        <GamePicker
+          setModalOpen={setModalOpen}
+
           addGame={addGame} />
       );
     }
@@ -94,9 +92,12 @@ export default function ListEditor() {
         <ListItem uniqueKey={game.appid}>
           <div className={styles.flexContainer}>
             {renderRankButtons()}
-            <GameImage appid={game.appid} hash={game.img_logo_url} />
+            <GameImage
+              appid={game.appid}
+              hash={game.img_logo_url} />
             <h4 className={styles.name}>{game.name}</h4>
-            <IoTrashBin className={styles.deleteButton}
+            <IoTrashBin
+              className={styles.deleteButton}
               onClick={() => deleteGame(game)} />
           </div>
         </ListItem>
@@ -116,10 +117,12 @@ export default function ListEditor() {
             <span className={styles.listNameLabel}>List Name:</span>
             <h3 className={styles.listName}>{renderListName()}</h3>
           </div>
-          <IoIosAddCircle className={styles.addGameButton}
+          <IoIosAddCircle
+            className={styles.addGameButton}
             onClick={() => setModalOpen(true)} />
         </div>
-        <ListContainer ordered={list.ordered}>
+        <ListContainer
+          ordered={list.ordered}>
           {renderListItems()}
         </ListContainer>
         {renderGamePicker()}
