@@ -42,12 +42,17 @@ export function constructImageURL(appid, hash) {
   return `http://media.steampowered.com/steamcommunity/public/images/apps/${appid}/${hash}.jpg`;
 }
 
+export function constructStoreURL(appid) {
+  return `https://store.steampowered.com/agecheck/app/${appid}/`;
+}
+
 const APIService = {
   getLists,
   getListById,
   getOwnedGames,
   putList,
-  constructImageURL
+  constructImageURL,
+  constructStoreURL
 };
 
 export default APIService;
