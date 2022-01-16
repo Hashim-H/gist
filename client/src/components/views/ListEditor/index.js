@@ -3,9 +3,13 @@ import styles from './ListEditor.module.css';
 
 // libraries
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { IoTrashBin, IoCaretDown, IoCaretUp, IoEllipsisHorizontalCircleSharp } from 'react-icons/io5';
+import { useParams, useNavigate } from 'react-router-dom';
+import { IoTrashBin, IoCaretDown, IoCaretUp, IoEllipsisHorizontalCircleSharp, IoSave } from 'react-icons/io5';
 import { IoIosAddCircle } from 'react-icons/io';
+import { useDispatch } from 'react-redux';
+
+// store
+import { getLists } from '../../../redux/slices/lists';
 
 // api
 import APIService from '../../../APIService';
@@ -21,28 +25,36 @@ import ListOptionForm from '../../features/ListOptionForm';
 
 export default function ListEditor() {
   // state
-  const [list, setList] = useState({});
+  const [list, setList] = useState({
+    _id: '',
+    name: '',
+    games: [],
+    ordered: false
+  });
   const [fetched, setFetched] = useState(false);
   const [gamePickerOpen, setGamePickerOpen] = useState(false);
   const [listOptionFormOpen, setListOptionFormOpen] = useState(false);
   const { id } = useParams();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (id) {
       // fetch list and update state
       (async () => {
         const apiList = await APIService.getListById(id);
-        setList(apiList);
+        const { _id, name, games, ordered } = apiList;
+        setList(prev => {
+          return {
+            ...prev,
+            _id: _id,
+            name: name,
+            games: games,
+            ordered: ordered
+          }
+        });
         setFetched(true);
       })();
-    } else {
-      // set state to empty values
-      setList({
-        _id: '',
-        name: '',
-        games: [],
-        ordered: false
-      });
     }
   }, [id]);
 
@@ -98,6 +110,12 @@ export default function ListEditor() {
       name: name,
       ordered: ordered
     });
+  };
+
+  const saveList = async () => {
+    await APIService.putList(list);
+    dispatch(getLists());
+    navigate('/');
   };
 
 
@@ -197,7 +215,10 @@ export default function ListEditor() {
             onClick={() => setGamePickerOpen(true)} />
           <IoEllipsisHorizontalCircleSharp
             className={styles.optionButton}
-            onClick={() => setListOptionFormOpen(true)}/>
+            onClick={() => setListOptionFormOpen(true)} />
+          <IoSave
+            className={styles.optionButton}
+            onClick={saveList}/>
         </div>
         <ListContainer
           ordered={list.ordered}>

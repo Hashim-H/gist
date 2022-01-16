@@ -26,11 +26,13 @@ async function getListById(req: Request, res: Response) {
     const appids = list.games.map((game: Game) => game.appid);
 
     // get owned games from api by appid
-    const games = await steam.getOwnedGamesById(appids);
+    const apiGames = await steam.getOwnedGamesById(appids);
 
     // assign additional properties
-    list.games.forEach((game: Game, index: number) => {
-      const apiData = games[index];
+    list.games.forEach((game: Game) => {
+      const apiData = apiGames.find((apiGame: Game) => {
+        return apiGame.appid === game.appid;
+      });
 
       game.name = apiData.name;
       game.img_icon_url = apiData.img_icon_url;
@@ -45,24 +47,31 @@ async function getListById(req: Request, res: Response) {
   }
 }
 
-async function postList(req: Request, res: Response) {
-  try {
-    // get data from request payload
-    const { name, games, ordered } = req.body;
-    if (name && games && ordered) {
-      // create new list document
-      const list = await ListModel.create({
-        steamid: apiUserId,
-        name,
-        games,
-        ordered
-      });
+async function putList(req: Request, res: Response) {
 
-      res.status(201);
-      res.send(list);
-    } else {
-      res.sendStatus(400) // bad request
-    }
+  // check data
+  const body = req.body;
+  if (
+    !body.hasOwnProperty('name') ||
+    !body.hasOwnProperty('games') ||
+    !body.hasOwnProperty('ordered')
+  ) res.sendStatus(400);
+
+  try {
+    // construct update
+    const { _id, name, games, ordered } = req.body;
+    const filter = { _id };
+    const update = {
+      steamid: apiUserId,
+      name,
+      games,
+      ordered
+    };
+    const options = { upsert: true };
+
+    // update database
+    await ListModel.findOneAndUpdate(filter, update, options);
+    res.sendStatus(201);
   } catch (err) {
     console.error(err);
     res.sendStatus(500);
@@ -72,5 +81,5 @@ async function postList(req: Request, res: Response) {
 export default {
   getLists,
   getListById,
-  postList
+  putList
 };

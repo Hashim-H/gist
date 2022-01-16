@@ -12,6 +12,6 @@ router.get('/games', game.getGameData);
 // lists
 router.get('/lists', list.getLists);
 router.get('/lists/:id', list.getListById);
-router.post('/lists', list.postList);
+router.put('/lists', list.putList);
 
 export default router;

@@ -27,6 +27,7 @@ export default function GameList() {
   useEffect(() => {
     (async () => {
       const data = await getListById(id);
+      console.log(data);
       setList(data);
     })();
   }, [id]);

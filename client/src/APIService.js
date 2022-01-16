@@ -29,6 +29,15 @@ export async function getOwnedGames() {
   }
 }
 
+export async function putList(payload) {
+  try {
+    const res = await axios.put(BASE_URL + '/lists', payload);
+    return res.data;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 export function constructImageURL(appid, hash) {
   return `http://media.steampowered.com/steamcommunity/public/images/apps/${appid}/${hash}.jpg`;
 }
@@ -37,6 +46,7 @@ const APIService = {
   getLists,
   getListById,
   getOwnedGames,
+  putList,
   constructImageURL
 };
 
