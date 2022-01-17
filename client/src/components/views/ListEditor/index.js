@@ -18,7 +18,7 @@ import APIService from '../../../APIService';
 import Container from '../../Done/ViewContainer';
 import ListContainer from '../../Done/ListContainer';
 import ListItem from '../../Done/ListItem';
-import GameImage from '../../features/GameImage';
+import GameImage from '../../Done/GameImage';
 import Spinner from '../../Done/Spinner';
 import GamePicker from '../../features/GamePicker';
 import ListOptionForm from '../../features/ListOptionForm';

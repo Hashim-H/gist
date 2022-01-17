@@ -1,23 +1,6 @@
-
-.header {
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.editButton {
-  color: var(--steam-color-5);
-  font-size: var(--font-medium);
-}
-
-.editButton:hover {
+.steamLink {
+  text-decoration: none;
   cursor: pointer;
-  color: white;
-}
-
-.wrapper {
- cursor: pointer;
 }
 
 .flexContainer {
@@ -26,13 +9,8 @@
   align-items: center;
 }
 
-.gameName {
+.gameRank {
   padding-left: 1rem;
-  color: var(--steam-color-3);
-  font-size: var(--font-normal);
-}
-
-.rank {
+  padding-right: 0.5rem;
   color: var(--steam-color-4);
-
 }

@@ -27,12 +27,6 @@ body {
   background-color: var(--steam-color-3);
 }
 
-h3 {
-  color: var(--steam-color-5);
-  font-size: var(--font-medium);
-  font-weight: 600;
-}
-
 h4 {
   color: var(--steam-color-1);
   font-size: var(--font-normal);

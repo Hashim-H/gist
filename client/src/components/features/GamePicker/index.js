@@ -12,7 +12,7 @@ import APIService from '../../../APIService';
 import Modal from '../../Modal';
 import ListContainer from '../../Done/ListContainer';
 import ListItem from '../../Done/ListItem';
-import GameImage from '../GameImage';
+import GameImage from '../../Done/GameImage';
 
 export default function GamePicker({ setGamePickerOpen, listGames, addGame }) {
   // state

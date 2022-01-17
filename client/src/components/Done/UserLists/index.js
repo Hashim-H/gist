@@ -10,6 +10,7 @@ import { selectLists } from '../../../redux/slices/lists';
 import ViewContainer from '../ViewContainer';
 import Banner from '../Banner';
 import Heading2 from '../Heading2';
+import Heading3 from '../Heading3';
 import Toolbar from '../Toolbar';
 import CustomIconLink from '../CustomIconLink';
 import ListContainer from '../ListContainer';
@@ -37,7 +38,9 @@ export default function UserLists() {
           return (
             <Fragment key={list._id}>
               <CustomLink to={`/list/${list._id}`}>
-                <ListItem>{list.name}</ListItem>
+                <ListItem>
+                  <Heading3>{list.name}</Heading3>
+                </ListItem>
               </CustomLink>
             </Fragment>
           );
