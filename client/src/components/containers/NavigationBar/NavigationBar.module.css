@@ -1,0 +1,18 @@
+.background {
+  position: sticky;
+  top: 0px;
+  width: 100vw;
+  padding: 1rem 5rem;
+  background: var(--steam-color-1);
+}
+
+.contentContainer {
+  width: 80vw;
+  max-width: 1024px;
+  margin: auto;
+
+  /* flex */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

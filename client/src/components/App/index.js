@@ -11,6 +11,8 @@ import { selectAuthenticated } from '../../redux/slices/authenticated';
 import { getLists } from '../../redux/slices/lists';
 
 // components
+import NavigationBar from '../containers/NavigationBar';
+
 import Nav from '../features/Nav';
 import UserLists from '../views/UserLists';
 import GameList from '../views/GameList';
@@ -33,12 +35,10 @@ export default function App() {
   // render
   return (
     <Router>
-      <header className={styles.header}>
-        <div className={styles.headerContainer}>
-          <h1>GIST</h1>
-          {renderNavbar()}
-        </div>
-      </header>
+      <NavigationBar>
+        <h1>GIST</h1>
+        {renderNavbar()}
+      </NavigationBar>
       <Routes>
         <Route path="/" exact element={<UserLists />} />
         <Route path="/list/:id" element={<GameList />} />

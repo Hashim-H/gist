@@ -49,16 +49,6 @@ h4 {
   font-size: var(--font-normal);
 }
 
-.header {
-  position: sticky;
-  top: 0px;
-  width: 100vw;
-  padding: 1rem 5rem;
-  background: var(--steam-color-1);
-  display: flex;
-  justify-content: center;
-}
-
 .headerContainer {
   width: 80vw;
   max-width: 1024px;
