@@ -9,9 +9,9 @@ import { useParams, Link } from "react-router-dom";
 import APIService from '../../../APIService';
 
 // components
-import Container from '../../containers/format/ViewContainer';
-import ListContainer from '../../containers/format/ListContainer';
-import ListItem from '../../containers/format/ListItem';
+import Container from '../../Done/ViewContainer';
+import ListContainer from '../../Done/ListContainer';
+import ListItem from '../../Done/ListItem';
 
 export default function FriendLists() {
   // state

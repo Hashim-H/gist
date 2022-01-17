@@ -9,9 +9,9 @@ import { IoCheckmark } from 'react-icons/io5';
 import APIService from '../../../APIService';
 
 // components
-import Modal from '../../containers/style/other/Modal';
-import ListContainer from '../../containers/format/ListContainer';
-import ListItem from '../../containers/format/ListItem';
+import Modal from '../../Modal';
+import ListContainer from '../../Done/ListContainer';
+import ListItem from '../../Done/ListItem';
 import GameImage from '../GameImage';
 
 export default function GamePicker({ setGamePickerOpen, listGames, addGame }) {

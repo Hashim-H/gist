@@ -11,12 +11,12 @@ import { selectAuthenticated } from '../../redux/slices/authenticated';
 import { getLists } from '../../redux/slices/lists';
 
 // components
-import UserLists from '../views/UserLists';
+import UserLists from '../Done/UserLists';
 import GameList from '../views/GameList';
 import ListEditor from '../views/ListEditor';
 import FriendsList from '../views/FriendsList';
 import FriendLists from '../views/FriendLists';
-import NavBar from '../features/NavBar';
+import NavBar from '../Done/NavBar';
 
 export default function App() {
   // state

@@ -1,7 +1,0 @@
-.contentContainer {
-  text-decoration: none;
-}
-
-.contentContainer:focus {
-  color: var(--steam-color-2);
-}

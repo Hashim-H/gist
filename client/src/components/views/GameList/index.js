@@ -11,11 +11,11 @@ import { IoPencil } from 'react-icons/io5';
 import APIService, { getListById } from '../../../APIService';
 
 // components
-import Container from '../../containers/format/ViewContainer';
-import ListContainer from '../../containers/format/ListContainer';
-import ListItem from '../../containers/format/ListItem';
+import Container from '../../Done/ViewContainer';
+import ListContainer from '../../Done/ListContainer';
+import ListItem from '../../Done/ListItem';
 import GameImage from '../../features/GameImage';
-import Spinner from '../../features/Spinner';
+import Spinner from '../../Done/Spinner';
 // import Modal from '../../containers/Modal';
 
 export default function GameList() {

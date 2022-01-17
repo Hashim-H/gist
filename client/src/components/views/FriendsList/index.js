@@ -9,10 +9,10 @@ import { Link } from 'react-router-dom';
 import APIService from '../../../APIService';
 
 // components
-import Container from '../../containers/format/ViewContainer';
-import Spinner from '../../features/Spinner';
-import ListContainer from '../../containers/format/ListContainer';
-import ListItem from '../../containers/format/ListItem';
+import Container from '../../Done/ViewContainer';
+import Spinner from '../../Done/Spinner';
+import ListContainer from '../../Done/ListContainer';
+import ListItem from '../../Done/ListItem';
 import ProfileImage from '../../features/ProfileImage';
 
 export default function FriendsList() {

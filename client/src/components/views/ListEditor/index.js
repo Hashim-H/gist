@@ -15,11 +15,11 @@ import { getLists } from '../../../redux/slices/lists';
 import APIService from '../../../APIService';
 
 // components
-import Container from '../../containers/format/ViewContainer';
-import ListContainer from '../../containers/format/ListContainer';
-import ListItem from '../../containers/format/ListItem';
+import Container from '../../Done/ViewContainer';
+import ListContainer from '../../Done/ListContainer';
+import ListItem from '../../Done/ListItem';
 import GameImage from '../../features/GameImage';
-import Spinner from '../../features/Spinner';
+import Spinner from '../../Done/Spinner';
 import GamePicker from '../../features/GamePicker';
 import ListOptionForm from '../../features/ListOptionForm';
 

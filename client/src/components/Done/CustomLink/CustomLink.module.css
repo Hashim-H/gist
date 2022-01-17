@@ -1,0 +1,7 @@
+.customLink {
+  text-decoration: none;
+}
+
+.customLink:focus {
+  color: var(--steam-color-2);
+}
