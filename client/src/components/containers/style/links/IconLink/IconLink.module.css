@@ -1,0 +1,9 @@
+.contentContainer {
+  color: var(--steam-color-5);
+  font-size: var(--font-large);
+}
+
+.contentContainer:hover {
+  color: white;
+  cursor: pointer;
+}

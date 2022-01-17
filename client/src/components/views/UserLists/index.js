@@ -2,6 +2,7 @@
 import styles from './UserLists.module.css';
 
 // libraries
+import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { IoIosAddCircle } from 'react-icons/io';
@@ -10,10 +11,16 @@ import { IoIosAddCircle } from 'react-icons/io';
 import { selectLists } from '../../../redux/slices/lists';
 
 // components
-import Container from '../../containers/Container';
-import ListContainer from '../../containers/ListContainer';
-import ListItem from '../../containers/ListItem';
+import ContentContainer from '../../containers/format/ViewContainer';
+import ListContainer from '../../containers/format/ListContainer';
+import ListItem from '../../containers/format/ListItem';
 import Spinner from '../../features/Spinner';
+import Banner from '../../features/Banner';
+import IconLink from '../../containers/style/links/IconLink';
+import CustomLink from '../../containers/style/links/CustomLink';
+import ListItemContentContainer from '../../containers/style/other/ListItemContentContainer';
+import Heading2 from '../../containers/style/headings/Heading2';
+import Toolbar from '../../containers/style/Toolbar';
 
 export default function UserLists() {
   // state
@@ -34,23 +41,33 @@ export default function UserLists() {
     })
   };
 
-  const renderBody = () => {
-    if (listsState.loading) return <Spinner />;
-    return <ListContainer>{renderListItems()}</ListContainer>;
-  };
-
 
   // render
+  if (listsState.loading) return <Spinner />;
+
   return (
-    <Container>
-      <div className={styles.header}>
-        <h2>My Lists</h2>
-        <Link
-          to={'/listeditor'}>
-          <IoIosAddCircle className={styles.addButton} />
-        </Link>
-      </div>
-      {renderBody()}
-    </Container>
+    <ContentContainer>
+      <Banner>
+        <Heading2>My Lists</Heading2>
+        <Toolbar>
+          <IconLink to="/listeditor"><IoIosAddCircle /></IconLink>
+        </Toolbar>
+      </Banner>
+      <ListContainer>
+        {listsState.lists.map(list => {
+          return (
+            <Fragment key={list._id}>
+              <ListItem>
+                <CustomLink to={`/list/${list._id}`}>
+                  <ListItemContentContainer>
+                    {list.name}
+                  </ListItemContentContainer>
+                </CustomLink>
+              </ListItem>
+            </Fragment>
+          );
+        })}
+      </ListContainer>
+    </ContentContainer>
   );
 }

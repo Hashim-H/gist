@@ -15,9 +15,9 @@ import { getLists } from '../../../redux/slices/lists';
 import APIService from '../../../APIService';
 
 // components
-import Container from '../../containers/Container';
-import ListContainer from '../../containers/ListContainer';
-import ListItem from '../../containers/ListItem';
+import Container from '../../containers/format/ViewContainer';
+import ListContainer from '../../containers/format/ListContainer';
+import ListItem from '../../containers/format/ListItem';
 import GameImage from '../../features/GameImage';
 import Spinner from '../../features/Spinner';
 import GamePicker from '../../features/GamePicker';

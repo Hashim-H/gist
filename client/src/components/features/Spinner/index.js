@@ -1,10 +1,16 @@
-import styles from './Spinner.module.css';
 import { Oval } from 'react-loader-spinner';
 
+import Flexbox from '../../containers/format/Flexbox';
+
 export default function Spinner() {
+  const flexOptions = {
+    justifyContent: 'center',
+    alignItems: 'center'
+  };
+
   return (
-    <div className={styles.spinnerContainer}>
-      <Oval color="#C7D5E0" />;
-    </div>
+    <Flexbox flexOptions={flexOptions}>
+      <Oval color="#C7D5E0" height={40} />;
+    </Flexbox>
   );
 }
