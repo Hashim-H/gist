@@ -12,6 +12,7 @@ import { getLists } from '../../redux/slices/lists';
 
 // components
 import NavigationBar from '../containers/NavigationBar';
+import Heading1 from '../containers/Heading1';
 
 import Nav from '../features/Nav';
 import UserLists from '../views/UserLists';
@@ -36,7 +37,7 @@ export default function App() {
   return (
     <Router>
       <NavigationBar>
-        <h1>GIST</h1>
+        <Heading1>GIST</Heading1>
         {renderNavbar()}
       </NavigationBar>
       <Routes>
