@@ -1,7 +1,7 @@
-.customLink {
+.listLinkContainer {
   text-decoration: none;
 }
 
-.customLink:focus {
+.listLinkContainer:focus {
   color: var(--steam-color-2);
 }

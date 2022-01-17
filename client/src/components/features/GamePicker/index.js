@@ -10,8 +10,8 @@ import APIService from '../../../APIService';
 
 // components
 import Modal from '../../Modal';
-import ListContainer from '../../Done/ListContainer';
-import ListItem from '../../Done/ListItem';
+import ListContainer from '../../containers/ListContainer';
+import ListItem from '../../containers/ListItemContainer';
 import GameImage from '../../Done/GameImage';
 
 export default function GamePicker({ setGamePickerOpen, listGames, addGame }) {

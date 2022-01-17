@@ -1,9 +1,9 @@
-.iconLink {
+.iconLinkContainer {
   color: var(--steam-color-5);
   font-size: var(--font-large);
 }
 
-.iconLink:hover {
+.iconLinkContainer:hover {
   color: white;
   cursor: pointer;
 }

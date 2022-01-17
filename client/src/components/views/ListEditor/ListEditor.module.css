@@ -1,34 +1,22 @@
-.header {
-  margin-bottom: 1.5rem;
-}
-
-.listHeader {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-}
-
-.listNameSpan {
-  color: var(--steam-color-2);
-}
-
 .listName {
   color: var(--steam-color-5);
   font-size: var(--font-medium);
   font-weight: 300;
-  flex-grow: 1;
 }
 
-.optionButton {
+.listNameSpan {
+  color: var(--steam-color-2);
+  font-weight: 500;
+}
+
+.toolButton {
   display: inline;
   margin-left: .5rem;
   color: var(--steam-color-5);
-  font-size: var(--font-medium);
+  font-size: var(--font-large);
 }
 
-.optionButton:hover {
+.toolButton:hover {
   cursor: pointer;
   color: white;
 }
@@ -40,23 +28,23 @@
   align-items: center;
 }
 
-.buttonContainer {
+.rankButtonContainer {
   display: flex;
   flex-direction: column;
   padding-right: 1rem;
 }
 
-.arrowButton {
+.rankButton {
   color: var(--steam-color-3);
   font-size: var(--font-medium);
 }
 
-.arrowButton:hover {
+.rankButton:hover {
   color: var(--steam-color-2);
   cursor: pointer;
 }
 
-.name {
+.gameName {
   padding-left: 1rem;
   flex-grow: 1;
 }

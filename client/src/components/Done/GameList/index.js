@@ -10,15 +10,13 @@ import { IoPencil } from 'react-icons/io5';
 import APIService from '../../../APIService';
 
 // components
-import ViewContainer from '../../Done/ViewContainer';
-import Banner from '../../Done/Banner';
-import Heading2 from '../../Done/Heading2';
-import Heading3 from '../../Done/Heading3';
-import CustomIconLink from '../../Done/CustomIconLink';
-import ListContainer from '../../Done/ListContainer';
-import ListItem from '../../Done/ListItem';
-import GameImage from '../../Done/GameImage';
-import Spinner from '../../Done/Spinner';
+import ViewContainer from '../../containers/ViewContainer';
+import Banner from '../../containers/ViewHeaderContainer';
+import CustomIconLink from '../../containers/IconLinkContainer';
+import ListContainer from '../../containers/ListContainer';
+import ListItem from '../../containers/ListItemContainer';
+import GameImage from '../GameImage';
+import Spinner from '../Spinner';
 
 export default function GameList() {
   // state
@@ -33,12 +31,12 @@ export default function GameList() {
   }, [id]);
 
   // render
-  if (!list.name) return <Spinner />;
+  if (!list.name) return <ViewContainer><Spinner /></ViewContainer>;
 
   return (
     <ViewContainer>
       <Banner>
-        <Heading2>{list.name}</Heading2>
+        <h2>{list.name}</h2>
           {list.name ?
           <CustomIconLink to={`/listeditor/${list._id}`}>
             <IoPencil className={styles.editButton} />
@@ -53,10 +51,10 @@ export default function GameList() {
                 <ListItem>
                   <FlexContainer>
                     <GameImage appid={game.appid} hash={game.img_logo_url} />
-                    <Heading3>
+                    <h3>
                       {list.ordered ? <GameRank index={index} /> : null}
                       {game.name}
-                    </Heading3>
+                    </h3>
                   </FlexContainer>
                 </ListItem>
               </SteamLink>

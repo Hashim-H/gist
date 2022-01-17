@@ -2,22 +2,24 @@
 import styles from './ListEditor.module.css';
 
 // libraries
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { IoTrashBin, IoCaretDown, IoCaretUp, IoEllipsisHorizontalCircleSharp, IoSave } from 'react-icons/io5';
 import { IoIosAddCircle } from 'react-icons/io';
 import { useDispatch } from 'react-redux';
 
 // store
-import { getLists } from '../../../redux/slices/lists';
 
 // api
 import APIService from '../../../APIService';
 
 // components
-import Container from '../../Done/ViewContainer';
-import ListContainer from '../../Done/ListContainer';
-import ListItem from '../../Done/ListItem';
+import ViewContainer from '../../containers/ViewContainer';
+import Banner from '../../containers/ViewHeaderContainer';
+import Toolbar from '../../Done/Toolbar';
+
+import ListContainer from '../../containers/ListContainer';
+import ListItem from '../../containers/ListItemContainer';
 import GameImage from '../../Done/GameImage';
 import Spinner from '../../Done/Spinner';
 import GamePicker from '../../features/GamePicker';
@@ -114,139 +116,121 @@ export default function ListEditor() {
 
   const saveList = async () => {
     await APIService.putList(list);
-    dispatch(getLists());
     navigate('/');
   };
 
   const deleteList = async () => {
     await APIService.deleteList(list._id);
-    dispatch(getLists());
     navigate('/');
   }
 
-
   // render helper functions
-  const renderGamePicker = () => {
-    if (gamePickerOpen) {
-      return (
-        <GamePicker
-          setGamePickerOpen={setGamePickerOpen}
-          listGames={list.games}
-          addGame={addGame} />
-      );
-    }
+  const ListName = ({ children }) => {
+    return (
+      <h3 className={styles.listName}>
+        List Name: <span className={styles.listNameSpan}>{children}</span>
+      </h3>
+    );
   };
 
-  const renderListOptionForm = () => {
-    if (listOptionFormOpen) {
-      return (
-        <ListOptionForm
-          setListOptionFormOpen={setListOptionFormOpen}
-          list={list}
-          saveListOptions={saveListOptions} />
-      );
-    }
-  };
+  const ToolButton = ({ children }) => {
+    return <div className={styles.toolButton}>{children}</div>;
+  }
 
-  const renderRankButtons = game => {
-    if (!list.ordered) return null;
+  const FlexContainer = ({ children }) => {
+    return <div className={styles.flexContainer}>{children}</div>;
+  }
 
-    const rank = list.games.findIndex(listGame => listGame.appid === game.appid);
+  const RankButtonContainer = ({ children }) => {
+    return <div className={styles.rankButtonContainer}>{children}</div>;
+  }
 
-    switch (rank) {
+  const RankButton = ({ children }) => {
+    return <div className={styles.rankButton}>{children}</div>;
+  }
+
+  const DeleteButton= ({ children }) => {
+    return <div className={styles.deleteButton}>{children}</div>
+  }
+
+  const RankButtons = ({ index }) => {
+    switch (index) {
       case 0:
-        return (
-          <div className={styles.buttonContainer}>
-            <IoCaretDown
-              className={styles.arrowButton}
-              onClick={() => downRankGame(rank)} />
-          </div>
-        );
-
-      case list.games.length - 1:
-        return (
-          <div className={styles.buttonContainer}>
-            <IoCaretUp
-              className={styles.arrowButton}
-              onClick={() => upRankGame(rank)} />
-          </div>
-        );
-
+        return <RankButton><IoCaretDown onClick={() => downRankGame(index)} /></RankButton>;
+      case list.games.length:
+        return <RankButton><IoCaretUp onClick={() => upRankGame(index)} /></RankButton>;
       default:
         return (
-          <div className={styles.buttonContainer}>
-            <IoCaretUp
-              className={styles.arrowButton}
-              onClick={() => upRankGame(rank)} />
-            <IoCaretDown
-              className={styles.arrowButton}
-              onClick={() => downRankGame(rank)} />
-          </div>
+          <>
+            <RankButton><IoCaretUp onClick={() => upRankGame(index)} /></RankButton>
+            <RankButton><IoCaretDown onClick={() => downRankGame(index)} /></RankButton>
+          </>
         );
     }
   };
 
-  const renderListItems = () => {
-    return list.games.map((game, index) => {
-      return (
-        <ListItem uniqueKey={game.appid}>
-          <div className={styles.flexContainer}>
-            {renderRankButtons(game)}
-            <GameImage
-              appid={game.appid}
-              hash={game.img_logo_url} />
-            <h4 className={styles.name}>
-              <span className={styles.rank}>{list.ordered ? `#${index + 1} ` : null}</span>
-              {game.name}</h4>
-            <IoTrashBin
-              className={styles.deleteButton}
-              onClick={() => deleteGame(game)} />
-          </div>
-        </ListItem>
-      );
-    });
-  };
+  const GameRank = ({ index }) => {
+    return <span className={styles.gameRank}>{`#${index + 1}`}</span>;
+  }
 
-  const renderListName = () => list.name ? list.name : 'Unnamed List';
-
-  const renderBody = () => {
-    if (id && !fetched) return <Spinner />;
-
+  const GameName = ({ children }) => {
     return (
-      <>
-        <div className={styles.listHeader}>
-          <h3 className={styles.listName}>
-            List Name: <span className={styles.listNameSpan}>{renderListName()}</span>
-          </h3>
-          <IoIosAddCircle
-            className={styles.optionButton}
-            onClick={() => setGamePickerOpen(true)} />
-          <IoEllipsisHorizontalCircleSharp
-            className={styles.optionButton}
-            onClick={() => setListOptionFormOpen(true)} />
-          <IoSave
-            className={styles.optionButton}
-            onClick={saveList} />
-          {list._id ? <IoTrashBin className={styles.optionButton} onClick={deleteList}/> : null}
-        </div>
-        <ListContainer
-          ordered={list.ordered}>
-          {renderListItems()}
-        </ListContainer>
-        {renderGamePicker()}
-        {renderListOptionForm()}
-      </>
+      <div className={styles.gameName}>
+        <h3>{children}</h3>
+      </div>
     );
   };
 
 
   // render
+  if (id && !fetched) return <ViewContainer><Spinner /></ViewContainer>;
+
   return (
-    <Container>
-      <div className={styles.header}>
+    <ViewContainer>
+      <Banner>
         <h2>List Editor</h2>
-      </div>
-      {renderBody()}
-    </Container>
+      </Banner>
+      <Banner>
+        <ListName>{list.name ? list.name : 'Unnamed List'}</ListName>
+        <Toolbar>
+          {list._id ? <ToolButton><IoTrashBin onClick={deleteList}/></ToolButton> : null}
+          <ToolButton><IoSave onClick={saveList} /></ToolButton>
+          <ToolButton><IoEllipsisHorizontalCircleSharp onClick={() => setListOptionFormOpen(true)} /></ToolButton>
+          <ToolButton><IoIosAddCircle onClick={() => setGamePickerOpen(true)} /></ToolButton>
+        </Toolbar>
+      </Banner>
+        <ListContainer ordered={list.ordered}>
+          {list.games.map((game, index) => {
+            return (
+              <Fragment key={game.appid}>
+                <ListItem>
+                  <FlexContainer>
+                    {list.ordered ? <RankButtonContainer><RankButtons index={index} /></RankButtonContainer> : null}
+                    <GameImage appid={game.appid} hash={game.img_logo_url} />
+                    <GameName>
+                      {list.ordered ? <GameRank index={index} /> : null}
+                      {game.name}
+                    </GameName>
+                    <DeleteButton><IoTrashBin onClick={() => deleteGame(game)} /></DeleteButton>
+                  </FlexContainer>
+                </ListItem>
+              </Fragment>
+            );
+          })}
+        </ListContainer>
+        {gamePickerOpen ?
+        <GamePicker
+          setGamePickerOpen={setGamePickerOpen}
+          listGames={list.games}
+          addGame={addGame} /> :
+        null}
+        {listOptionFormOpen ?
+        <ListOptionForm
+          setListOptionFormOpen={setListOptionFormOpen}
+          list={list}
+          saveListOptions={saveListOptions} /> :
+        null}
+    </ViewContainer>
   );
 }
+
