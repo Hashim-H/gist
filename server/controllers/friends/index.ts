@@ -30,7 +30,19 @@ export async function getFriendListsByUserId(req: Request, res: Response) {
   }
 }
 
+export async function getPlayerSummariesById(req: Request, res: Response) {
+  try {
+    const friendData = await steam.getPlayerSummariesById(req.params.id);
+    res.status(200);
+    res.send(friendData);
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(500);
+  }
+}
+
 export default {
   getUserData,
-  getFriendListsByUserId
+  getFriendListsByUserId,
+  getPlayerSummariesById
 };

@@ -18,6 +18,7 @@ router.delete('/lists/:id', list.deleteList);
 
 // friends
 router.get('/friends', friends.getUserData);
-router.get('/friends/:id/lists', friends.getFriendListsByUserId)
+router.get('/friends/:id/lists', friends.getFriendListsByUserId);
+router.get('/friends/:id/steamdata', friends.getPlayerSummariesById)
 
 export default router;

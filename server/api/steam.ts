@@ -79,10 +79,22 @@ async function getPlayerSummariesArray(friendsList: Number[]) {
   return res.data.response.players;
 }
 
+async function getPlayerSummariesById(steamid: String) {
+  const customParams = { steamids: steamid };
+
+  // fetch data
+  const res = await getFactory('ISteamUser/GetPlayerSummaries/v0002/', customParams);
+
+  // extract necessary data
+  const [ player ] = res.data.response.players;
+  return player;
+}
+
 export default {
   getPlayerSummaries,
   getOwnedGamesById,
   getOwnedGames,
   getFriendsList,
-  getPlayerSummariesArray
+  getPlayerSummariesArray,
+  getPlayerSummariesById
 };
