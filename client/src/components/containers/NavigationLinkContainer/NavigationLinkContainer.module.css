@@ -1,0 +1,9 @@
+.nav {
+  width: 270px;
+}
+
+.ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
