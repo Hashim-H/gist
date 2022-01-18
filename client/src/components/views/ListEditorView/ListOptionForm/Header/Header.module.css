@@ -1,0 +1,6 @@
+.heading {
+  color: var(--steam-color-5);
+  font-size: var(--font-medium);
+  margin-bottom: 1rem;
+  text-align: center;
+}

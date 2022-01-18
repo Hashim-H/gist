@@ -10,8 +10,7 @@ const ListSchema = new Schema({
     required: true
   },
   games: [{
-    appid: Number,
-    comments: String
+    appid: Number
   }],
   ordered: {
     type: Boolean,

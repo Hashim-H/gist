@@ -39,9 +39,6 @@ export default function ListEditor() {
 
 
   // button click handler functions
-  const onOptionFormOpen = () => setOptionFormOpen(true);
-  const onGamePickerOpen = () => setGamePickerOpen(true);
-
   const onIncrementRank = rank => {
     const newList = [...list.games];
     [newList[rank - 1], newList[rank]] = [newList[rank], newList[rank - 1]]; // swap adjacent games
@@ -62,7 +59,13 @@ export default function ListEditor() {
   };
 
   const onAddGame = game => {
-    setList({ ...list, games: [...list.games, game] });
+    const newGame = {
+      appid: game.appid,
+      name: game.name,
+      img_logo_url: game.img_logo_url
+    };
+
+    setList({ ...list, games: [...list.games, newGame] });
   };
 
   const onSaveOptions = ({ name, ordered }) => {
@@ -83,26 +86,26 @@ export default function ListEditor() {
         <Header />
         <Toolbar
           list={list}
-          onOptionFormOpen={onOptionFormOpen}
-          onGamePickerOpen={onGamePickerOpen} />
+          setOptionFormOpen={setOptionFormOpen}
+          setGamePickerOpen={setGamePickerOpen} />
         <List
           list={list}
           onIncrementRank={onIncrementRank}
           onDecrementRank={onDecrementRank}
           onRemoveGame={onRemoveGame} />
+        {gamePickerOpen ?
+          <GamePicker
+            setGamePickerOpen={setGamePickerOpen}
+            listGames={list.games}
+            onAddGame={onAddGame} /> :
+          null}
+        {optionFormOpen ?
+          <ListOptionForm
+            setOptionFormOpen={setOptionFormOpen}
+            list={list}
+            onSaveOptions={onSaveOptions} /> :
+          null}
       </View>
-      {gamePickerOpen ?
-        <GamePicker
-          setGamePickerOpen={setGamePickerOpen}
-          listGames={list.games}
-          onAddGame={onAddGame} /> :
-        null}
-      {optionFormOpen ?
-        <ListOptionForm
-          setListOptionFormOpen={setOptionFormOpen}
-          list={list}
-          saveListOptions={onSaveOptions} /> :
-        null}
     </>
   );
 }

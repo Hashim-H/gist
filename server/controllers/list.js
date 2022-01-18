@@ -32,7 +32,6 @@ async function getListById(req, res) {
       });
 
       game.name = apiData.name;
-      game.img_icon_url = apiData.img_icon_url;
       game.img_logo_url = apiData.img_logo_url;
     });
 

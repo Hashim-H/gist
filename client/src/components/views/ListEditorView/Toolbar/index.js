@@ -13,7 +13,7 @@ import APIService from '../../../../APIService';
 import ViewSection from '../../../containers/views/ViewSectionContainer';
 
 
-export default function Toolbar({ list, onOptionFormOpen, onGamePickerOpen }) {
+export default function Toolbar({ list, setOptionFormOpen, setGamePickerOpen }) {
   // button functions
   const navigate = useNavigate();
 
@@ -27,6 +27,14 @@ export default function Toolbar({ list, onOptionFormOpen, onGamePickerOpen }) {
     await APIService.deleteList(list._id);
     // add function to display to the screen
     navigate('/');
+  };
+
+  const openOptions = () => {
+    setOptionFormOpen(true);
+  };
+
+  const openGamePicker = () => {
+    setGamePickerOpen(true);
   };
 
   // render helper functions
@@ -53,8 +61,8 @@ export default function Toolbar({ list, onOptionFormOpen, onGamePickerOpen }) {
       <IconButtons>
         {list._id ? <IconButton><IoTrashBin onClick={deleteList}/></IconButton> : null}
         <IconButton><IoSave onClick={saveList} /></IconButton>
-        <IconButton><IoEllipsisHorizontalCircleSharp onClick={onOptionFormOpen} /></IconButton>
-        <IconButton><IoIosAddCircle onClick={onGamePickerOpen} /></IconButton>
+        <IconButton><IoEllipsisHorizontalCircleSharp onClick={openOptions} /></IconButton>
+        <IconButton><IoIosAddCircle onClick={openGamePicker} /></IconButton>
       </IconButtons>
     </ViewSection>
   );

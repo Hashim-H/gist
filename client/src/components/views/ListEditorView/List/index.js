@@ -39,7 +39,7 @@ export default function List({ list, onIncrementRank, onDecrementRank, onRemoveG
                   {list.ordered ? <span className={styles.gameRank}>{`#${index + 1}`}</span> : null}
                   {game.name}
                 </h3>
-                <IoTrashBin className={styles.deleteButton} onClick={() => onRemoveGame(game)} />
+                <IoTrashBin className={styles.deleteButton} onClick={() => onRemoveGame(game.appid)} />
               </div>
             </ListItem>
           </Fragment>

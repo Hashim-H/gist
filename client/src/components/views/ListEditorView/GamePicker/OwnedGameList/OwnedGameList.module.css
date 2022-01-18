@@ -1,25 +1,16 @@
-.modalHeader {
-  padding: 1rem 0;
-  display: flex;
-  justify-content: space-between;
+.containerOuter {
+  background-color: var(--steam-color-3);
+  border-radius: 10px;;
+  padding: 10px;
 }
 
-.heading {
-  font-size: var(--font-medium)
-}
-
-.doneButton {
-  padding: .1rem 1rem;
-  border: none;
+.containerInner {
+  height: 400px;
+  overflow: hidden;
+  overflow-y: scroll;
+  background-color: var(--steam-color-3);
   border-radius: 10px;
-  background-color: var(--steam-color-5);
-  color: var(--steam-color-3);
-  font-weight: 600;
-}
-
-.doneButton:hover {
-  background-color: var(--steam-color-2);
-  cursor: pointer;
+  padding: 0 10px 0 0;
 }
 
 .allowed:hover {
@@ -30,29 +21,13 @@
   cursor: not-allowed;
 }
 
-.listOuter {
-  background-color: var(--steam-color-3);
-  border-radius: 10px;;
-  padding: 10px;
-
-}
-
-.listInner {
-  height: 400px;
-  overflow: hidden;
-  overflow-y: scroll;
-  background-color: var(--steam-color-3);
-  border-radius: 10px;
-  padding: 0 10px 0 0;
-}
-
 .flexContainer {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
 
-.name {
+.gameName {
   padding-left: 1rem;
 }
 
