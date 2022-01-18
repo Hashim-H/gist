@@ -38,52 +38,9 @@ export async function deleteList(id) {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 export async function getOwnedGames() {
   try {
     const res = await axios.get(BASE_URL + '/games');
-    return res.data;
-  } catch (err) {
-    console.error(err);
-  }
-}
-
-
-
-
-
-export async function getFriends() {
-  try {
-    const res = await axios.get(BASE_URL + '/friends');
-    return res.data;
-  } catch (err) {
-    console.error(err);
-  }
-}
-
-export async function getFriendListsByUserId(id) {
-  try {
-    const res = await axios.get(BASE_URL + `/friends/${id}/lists`);
-    return res.data;
-  } catch (err) {
-    console.error(err);
-  }
-}
-
-export async function getUserData(steamid) {
-  try {
-    const res = await axios.get(BASE_URL + `/friends/${steamid}/steamdata`);
     return res.data;
   } catch (err) {
     console.error(err);
@@ -101,12 +58,9 @@ export function constructStoreURL(appid) {
 const APIService = {
   getLists,
   getListById,
-  getFriendListsByUserId,
   getOwnedGames,
   putList,
   deleteList,
-  getFriends,
-  getUserData,
   constructImageURL,
   constructStoreURL
 };

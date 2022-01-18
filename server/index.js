@@ -1,8 +1,8 @@
-import express from 'express';
-import cors from 'cors';
-import router from './middleware/router';
-import database from './models';
-import { serverPort as port } from './environment';
+const express = require('express');
+const cors = require('cors');
+const router = require('./router');
+const database = require('./models');
+const port = require('./environment').serverPort;
 
 // create server
 const app = express();

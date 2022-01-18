@@ -1,14 +1,14 @@
 // styles
-import styles from './ListEditorView.module.css';
+import styles from './List.module.css';
 
 // libararies
 import { Fragment } from 'react';
 import { IoCaretDown, IoCaretUp, IoTrashBin } from 'react-icons/io5';
 
 // components
-import ListContainer from '../../containers/lists/ListContainer';
-import ListItem from '../../containers/lists/ListItemContainer';
-import GameImage from '../../features/GameImage';
+import ListContainer from '../../../containers/lists/ListContainer';
+import ListItem from '../../../containers/lists/ListItemContainer';
+import GameImage from '../../../features/GameImage';
 
 export default function List({ list, onIncrementRank, onDecrementRank, onRemoveGame }) {
   // render helper functions

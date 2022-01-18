@@ -1,7 +1,6 @@
 {
   "dependencies": {
-    "commitizen": "^4.2.4",
-    "react-loader-spinner": "^5.0.7"
+    "commitizen": "^4.2.4"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^3.3.0"

@@ -1,10 +1,8 @@
-import ListModel from '../../models/List';
-import { Request, Response } from 'express';
-import Game from '../../interfaces/Game';
-import { apiUserId } from '../../environment';
-import steam from '../../api/steam';
+const ListModel = require('../models/List');
+const { apiUserId } = require('../environment');
+const steam = require('../steam');
 
-async function getLists(_: Request, res: Response) {
+async function getLists(_, res) {
   try {
     const lists = await ListModel.find({ steamid: apiUserId });
 
@@ -16,21 +14,20 @@ async function getLists(_: Request, res: Response) {
   }
 }
 
-
-async function getListById(req: Request, res: Response) {
+async function getListById(req, res) {
   try {
     // get list from database
     const [list] = await ListModel.find({ _id: req.params.id }).lean();
 
     // extract appids
-    const appids = list.games.map((game: Game) => game.appid);
+    const appids = list.games.map(game => game.appid);
 
     // get owned games from api by appid
     const apiGames = await steam.getOwnedGamesById(appids);
 
     // assign additional properties
-    list.games.forEach((game: Game) => {
-      const apiData = apiGames.find((apiGame: Game) => {
+    list.games.forEach(game => {
+      const apiData = apiGames.find(apiGame => {
         return apiGame.appid === game.appid;
       });
 
@@ -47,8 +44,7 @@ async function getListById(req: Request, res: Response) {
   }
 }
 
-
-async function putList(req: Request, res: Response) {
+async function putList(req, res) {
 
   // check data
   const body = req.body;
@@ -88,7 +84,7 @@ async function putList(req: Request, res: Response) {
   }
 }
 
-async function deleteList(req: Request, res: Response) {
+async function deleteList(req, res) {
   try {
     const filter = { _id: req.params.id };
     await ListModel.deleteOne(filter);
@@ -99,7 +95,7 @@ async function deleteList(req: Request, res: Response) {
   }
 }
 
-export default {
+module.exports = {
   getLists,
   getListById,
   putList,

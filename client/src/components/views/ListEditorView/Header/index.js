@@ -1,4 +1,4 @@
-import ViewSection from '../../containers/views/ViewSectionContainer';
+import ViewSection from '../../../containers/views/ViewSectionContainer';
 
 export default function Header() {
   return (

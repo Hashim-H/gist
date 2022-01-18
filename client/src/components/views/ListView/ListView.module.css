@@ -10,7 +10,7 @@
 }
 
 .gameRank {
-  padding-left: 1rem;
-  padding-right: 0.5rem;
+  margin-left: 1rem;
+  margin-right: 0.5rem;
   color: var(--steam-color-4);
 }

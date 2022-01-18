@@ -1,4 +1,4 @@
-import { model, Schema } from 'mongoose';
+const { model, Schema } = require('mongoose');
 
 const ListSchema = new Schema({
   name: {
@@ -16,21 +16,9 @@ const ListSchema = new Schema({
   ordered: {
     type: Boolean,
     required: true
-  },
-  // draft: {
-  //   type: Boolean,
-  //   required: true
-  // },
-  // public: {
-  //   type: Boolean,
-  //   required: true
-  // },
-  // created_at: {
-  //   type: Date,
-  //   required: true
-  // }
+  }
 });
 
 const List = model('List', ListSchema, 'list');
 
-export default List;
+module.exports = List;

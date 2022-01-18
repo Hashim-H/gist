@@ -65,91 +65,44 @@ export default function ListEditor() {
     setList({ ...list, games: [...list.games, game] });
   };
 
+  const onSaveOptions = ({ name, ordered }) => {
+    setList({
+      ...list,
+      name: name,
+      ordered: ordered
+    });
+  };
+
 
   // render
   if (id && !list._id) return <View><Spinner /></View>;
 
   return (
-    <View>
-      <Header />
-      <Toolbar
-        list={list}
-        onOptionFormOpen={onOptionFormOpen}
-        onGamePickerOpen={onGamePickerOpen} />
-      <List
-        list={list}
-        onIncrementRank={onIncrementRank}
-        onDecrementRank={onDecrementRank}
-        onRemoveGame={onRemoveGame} />
-    </View>
+    <>
+      <View>
+        <Header />
+        <Toolbar
+          list={list}
+          onOptionFormOpen={onOptionFormOpen}
+          onGamePickerOpen={onGamePickerOpen} />
+        <List
+          list={list}
+          onIncrementRank={onIncrementRank}
+          onDecrementRank={onDecrementRank}
+          onRemoveGame={onRemoveGame} />
+      </View>
+      {gamePickerOpen ?
+        <GamePicker
+          setGamePickerOpen={setGamePickerOpen}
+          listGames={list.games}
+          onAddGame={onAddGame} /> :
+        null}
+      {optionFormOpen ?
+        <ListOptionForm
+          setListOptionFormOpen={setOptionFormOpen}
+          list={list}
+          saveListOptions={onSaveOptions} /> :
+        null}
+    </>
   );
-
-
-
-  // const saveListOptions = ({ name, ordered }) => {
-  //   setList({
-  //     ...list,
-  //     name: name,
-  //     ordered: ordered
-  //   });
-  // };
-
-
-
-
-
-
-  // const RankButtonContainer = ({ children }) => {
-  //   return <div className={styles.rankButtonContainer}>{children}</div>;
-  // }
-
-  //   const RankButton = ({ children }) => {
-  //   return <div className={styles.rankButton}>{children}</div>;
-  // }
-
-
-
-
-
-
-
-
-
-
-
 }
-
-{/* <ListContainer ordered={list.ordered}>
-  {list.games.map((game, index) => {
-    return (
-      <Fragment key={game.appid}>
-        <ListItem>
-          <FlexContainer>
-            {list.ordered ? <RankButtonContainer><RankButtons index={index} /></RankButtonContainer> : null}
-            <GameImage appid={game.appid} hash={game.img_logo_url} />
-            <GameName>
-              {list.ordered ? <GameRank index={index} /> : null}
-              {game.name}
-            </GameName>
-            <DeleteButton><IoTrashBin onClick={() => deleteGame(game)} /></DeleteButton>
-          </FlexContainer>
-        </ListItem>
-      </Fragment>
-    );
-  })}
-</ListContainer>
-{gamePickerOpen ?
-<GamePicker
-  setGamePickerOpen={setGamePickerOpen}
-  listGames={list.games}
-  addGame={addGame} /> :
-null}
-{listOptionFormOpen ?
-<ListOptionForm
-  setListOptionFormOpen={setListOptionFormOpen}
-  list={list}
-  saveListOptions={saveListOptions} /> :
-null} */}
-
-
-

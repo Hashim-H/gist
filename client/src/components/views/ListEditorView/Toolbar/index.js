@@ -1,5 +1,5 @@
 // styles
-import styles from './ListEditorView.module.css';
+import styles from './Toolbar.module.css';
 
 // libraries
 import { useNavigate } from 'react-router-dom';
@@ -7,10 +7,10 @@ import { IoEllipsisHorizontalCircleSharp, IoSave, IoTrashBin } from 'react-icons
 import { IoIosAddCircle } from 'react-icons/io';
 
 // api
-import APIService from '../../../APIService';
+import APIService from '../../../../APIService';
 
 // components
-import ViewSection from '../../containers/views/ViewSectionContainer';
+import ViewSection from '../../../containers/views/ViewSectionContainer';
 
 
 export default function Toolbar({ list, onOptionFormOpen, onGamePickerOpen }) {
