@@ -9,6 +9,11 @@
   font-weight: 500;
 }
 
+.iconLinks {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
 .toolButton {
   display: inline;
   margin-left: .5rem;
@@ -28,7 +33,7 @@
   align-items: center;
 }
 
-.rankButtonContainer {
+.rankButtons {
   display: flex;
   flex-direction: column;
   padding-right: 1rem;
@@ -37,6 +42,7 @@
 .rankButton {
   color: var(--steam-color-3);
   font-size: var(--font-medium);
+  list-style-type: none;
 }
 
 .rankButton:hover {

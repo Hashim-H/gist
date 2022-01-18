@@ -2,7 +2,7 @@
 import styles from './GameImage.module.css';
 
 // api
-import APIService from "../../APIService";
+import APIService from '../../../APIService';
 
 export default function GameImage({ appid, hash }) {
   const url = APIService.constructImageURL(appid, hash);

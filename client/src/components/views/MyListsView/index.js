@@ -6,8 +6,8 @@ import APIService from '../../../APIService';
 
 // components
 import View from '../../containers/views/ViewContainer';
-import Spinner from '../../Spinner';
-import ViewHeader from '../../containers/views/ViewHeaderContainer';
+import Spinner from '../../features/Spinner';
+import ViewHeader from '../../containers/views/ViewSectionContainer';
 import { AddListButton } from './subComponents';
 import { MyLists } from './subComponents';
 

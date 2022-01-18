@@ -7,8 +7,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // components
 import Banner from '../features/Banner';
 import MyListsView from '../views/MyListsView';
-import GameList from '../views/ListView';
-import ListEditor from '../ListEditor';
+import ListView from '../views/ListView';
+import ListEditorView from '../views/ListEditorView';
 
 export default function App() {
   return (
@@ -16,9 +16,9 @@ export default function App() {
       <Banner />
       <Routes>
         <Route path="/" exact element={<MyListsView />} />
-        <Route path="/list/:id" element={<GameList />} />
-        <Route path="/listeditor/" element={<ListEditor />} />
-        <Route path="/listeditor/:id" element={<ListEditor />} />
+        <Route path="/list/:id" element={<ListView />} />
+        <Route path="/listeditor/" element={<ListEditorView />} />
+        <Route path="/listeditor/:id" element={<ListEditorView />} />
       </Routes>
     </Router>
   );

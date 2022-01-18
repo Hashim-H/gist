@@ -20,15 +20,6 @@ export async function getListById(id) {
   }
 }
 
-export async function getOwnedGames() {
-  try {
-    const res = await axios.get(BASE_URL + '/games');
-    return res.data;
-  } catch (err) {
-    console.error(err);
-  }
-}
-
 export async function putList(payload) {
   try {
     const res = await axios.put(BASE_URL + '/lists', payload);
@@ -46,6 +37,31 @@ export async function deleteList(id) {
     console.error(err);
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+export async function getOwnedGames() {
+  try {
+    const res = await axios.get(BASE_URL + '/games');
+    return res.data;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+
+
+
 
 export async function getFriends() {
   try {

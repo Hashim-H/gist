@@ -7,11 +7,11 @@ import APIService from '../../../APIService';
 
 // components
 import View from '../../containers/views/ViewContainer';
-import Spinner from '../../Spinner';
-import ViewHeader from '../../containers/views/ViewHeaderContainer';
+import Spinner from '../../features/Spinner';
+import ViewHeader from '../../containers/views/ViewSectionContainer';
 import { EditListButton, List } from './subComponents';
 
-export default function GameList() {
+export default function ListView() {
   // state
   const { id } = useParams();
   const [list, setList] = useState({});

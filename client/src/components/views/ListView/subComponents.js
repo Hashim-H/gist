@@ -12,7 +12,7 @@ import APIService from '../../../APIService';
 import IconLink from '../../containers/links/IconLinkContainer';
 import ListContainer from '../../containers/lists/ListContainer';
 import ListItem from '../../containers/lists/ListItemContainer';
-import GameImage from '../../GameImage';
+import GameImage from '../../features/GameImage';
 
 export function EditListButton({ id }) {
   return (
