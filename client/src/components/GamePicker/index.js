@@ -6,13 +6,13 @@ import { useState, useEffect } from 'react';
 import { IoCheckmark } from 'react-icons/io5';
 
 // api
-import APIService from '../../../APIService';
+import APIService from '../../APIService';
 
 // components
-import Modal from '../../Modal';
-import ListContainer from '../../containers/ListContainer';
-import ListItem from '../../containers/ListItemContainer';
-import GameImage from '../../Done/GameImage';
+import Modal from '../Modal';
+import ListContainer from '../containers/lists/ListContainer';
+import ListItem from '../containers/lists/ListItemContainer';
+import GameImage from '../GameImage';
 
 export default function GamePicker({ setGamePickerOpen, listGames, addGame }) {
   // state

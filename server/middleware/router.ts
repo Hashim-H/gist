@@ -6,13 +6,18 @@ import friends from '../controllers/friends';
 
 const router = Router();
 
-router.get('/', (_, res) => res.send('hi'));
-router.get('/steam/user', user.getUserData);
-router.get('/games', game.getGameData);
 
 // lists
 router.get('/lists', list.getLists);
 router.get('/lists/:id', list.getListById);
+
+
+
+
+router.get('/steam/user', user.getUserData);
+router.get('/games', game.getGameData);
+
+
 router.put('/lists', list.putList);
 router.delete('/lists/:id', list.deleteList);
 

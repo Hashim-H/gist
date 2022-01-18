@@ -11,19 +11,19 @@ import { useDispatch } from 'react-redux';
 // store
 
 // api
-import APIService from '../../../APIService';
+import APIService from '../../APIService';
 
 // components
-import ViewContainer from '../../containers/ViewContainer';
-import Banner from '../../containers/ViewHeaderContainer';
-import Toolbar from '../../Done/Toolbar';
+import ViewContainer from '../containers/views/ViewContainer';
+import Banner from '../containers/views/ViewHeaderContainer';
+import Toolbar from '../Toolbar';
 
-import ListContainer from '../../containers/ListContainer';
-import ListItem from '../../containers/ListItemContainer';
-import GameImage from '../../Done/GameImage';
-import Spinner from '../../Done/Spinner';
-import GamePicker from '../../features/GamePicker';
-import ListOptionForm from '../../features/ListOptionForm';
+import ListContainer from '../containers/lists/ListContainer';
+import ListItem from '../containers/lists/ListItemContainer';
+import GameImage from '../GameImage';
+import Spinner from '../Spinner';
+import GamePicker from '../GamePicker';
+import ListOptionForm from '../ListOptionForm';
 
 export default function ListEditor() {
   // state

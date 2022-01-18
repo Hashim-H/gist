@@ -5,9 +5,9 @@ import { useState, useEffect } from 'react';
 import APIService from '../../../APIService';
 
 // components
-import Spinner from '../../Done/Spinner';
-import View from '../../containers/ViewContainer';
-import ViewHeader from '../../containers/ViewHeaderContainer';
+import View from '../../containers/views/ViewContainer';
+import Spinner from '../../Spinner';
+import ViewHeader from '../../containers/views/ViewHeaderContainer';
 import { AddListButton } from './subComponents';
 import { MyLists } from './subComponents';
 

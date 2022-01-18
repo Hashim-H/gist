@@ -3,10 +3,10 @@ import { Fragment } from 'react';
 import { IoIosAddCircle } from 'react-icons/io';
 
 // components
-import IconLink from '../../containers/IconLinkContainer';
-import List from '../../containers/ListContainer';
-import ListItem from '../../containers/ListItemContainer';
-import ListLink from '../../containers/ListLinkContainer';
+import IconLink from '../../containers/links/IconLinkContainer';
+import List from '../../containers/lists/ListContainer';
+import ListItem from '../../containers/lists/ListItemContainer';
+import ListLink from '../../containers/links/ListLinkContainer';
 
 export function AddListButton() {
   return (

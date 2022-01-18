@@ -6,7 +6,6 @@ import steam from '../../api/steam';
 
 async function getLists(_: Request, res: Response) {
   try {
-    // get lists from database
     const lists = await ListModel.find({ steamid: apiUserId });
 
     res.status(200);
@@ -16,6 +15,7 @@ async function getLists(_: Request, res: Response) {
     res.sendStatus(500);
   }
 }
+
 
 async function getListById(req: Request, res: Response) {
   try {
@@ -46,6 +46,7 @@ async function getListById(req: Request, res: Response) {
     res.sendStatus(500);
   }
 }
+
 
 async function putList(req: Request, res: Response) {
 

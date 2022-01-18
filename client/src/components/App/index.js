@@ -5,10 +5,10 @@ import './App.module.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // components
-import Banner from '../Banner';
+import Banner from '../features/Banner';
 import MyListsView from '../views/MyListsView';
-import GameList from '../Done/GameList';
-import ListEditor from '../views/ListEditor';
+import GameList from '../views/ListView';
+import ListEditor from '../ListEditor';
 
 export default function App() {
   return (

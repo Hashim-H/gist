@@ -5,7 +5,7 @@ import styles from './ListOptionForm.module.css';
 import { useState, useEffect } from 'react';
 
 // components
-import Modal from '../../Modal';
+import Modal from '../Modal';
 
 export default function ListOptionForm({ setListOptionFormOpen, list, saveListOptions }) {
   // state
