@@ -17,7 +17,7 @@ import ListOptionForm from './ListOptionForm';
 interface gameList {
   _id: string;
   name: string;
-  games: any[];
+  games: Game[];
   ordered: boolean;
 }
 
@@ -52,21 +52,21 @@ const ListEditor: FC = () => {
 
 
   // button click handler functions
-  const onIncrementRank = rank => {
+  const onIncrementRank = (rank: number) => {
     const newList = [...list.games];
     [newList[rank - 1], newList[rank]] = [newList[rank], newList[rank - 1]]; // swap adjacent games
 
     setList({ ...list, games: newList });
   };
 
-  const onDecrementRank = rank => {
+  const onDecrementRank = (rank: number) => {
     const newList = [...list.games];
     [newList[rank + 1], newList[rank]] = [newList[rank], newList[rank + 1]]; // swap adjacent games
 
     setList({ ...list, games: newList });
   };
 
-  const onRemoveGame = appid => {
+  const onRemoveGame = (appid: number) => {
     const newList = [...list.games].filter(game => game.appid !== appid);
     setList({ ...list, games: newList });
   };
