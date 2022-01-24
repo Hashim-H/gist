@@ -5,7 +5,7 @@ import styles from './Banner.module.css';
 import { Link } from 'react-router-dom';
 import * as React from 'react'
 
-const Banner: React.FC = () => {
+const Banner: React.FC = (): JSX.Element => {
   return (
     <div className={styles.banner}>
       <Link className={styles.link} to="/">

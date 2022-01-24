@@ -3,10 +3,15 @@ import styles from './Spinner.module.css';
 
 // libraries
 import { Oval } from 'react-loader-spinner';
+import * as React from 'react'
 
-export default function Spinner() {
+interface Props {
+  children: any
+}
+
+const Spinner: React.FC = (): JSX.Element => {
   // helper functions
-  const SpinnerContainer = ({ children }) => {
+  const SpinnerContainer: React.FC<Props> = ({ children }): JSX.Element => {
     return <div className={styles.spinnerContainer}>{children}</div>
   };
 
@@ -18,3 +23,4 @@ export default function Spinner() {
   );
 }
 
+export default Spinner;

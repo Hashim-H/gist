@@ -1,7 +1,13 @@
 import styles from './Modal.module.css';
 import { IoIosCloseCircle } from 'react-icons/io';
+import * as React from 'react'
 
-export default function Modal({ setModalOpen, children }) {
+interface Props {
+  setModalOpen: Function;
+  children: Element
+}
+
+const Modal: React.FC<Props> = ({ setModalOpen, children }): JSX.Element => {
   const closeModal = () => setModalOpen(false);
 
   return (
@@ -20,3 +26,5 @@ export default function Modal({ setModalOpen, children }) {
     </>
   );
 }
+
+export default Modal;

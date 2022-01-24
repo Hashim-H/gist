@@ -13,12 +13,12 @@ import React = require('react');
 
 
 
-const App: React.FC<> = () => {
+const App: React.FC = (): JSX.Element => {
   return (
     <Router>
       <Banner />
       <Routes>
-        <Route path="/" exact element={<MyListsView />} />
+        <Route path="/" element={<MyListsView />} />
         <Route path="/list/:id" element={<ListView />} />
         <Route path="/listeditor/" element={<ListEditorView />} />
         <Route path="/listeditor/:id" element={<ListEditorView />} />

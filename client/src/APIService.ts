@@ -11,7 +11,7 @@ export async function getLists() {
   }
 }
 
-export async function getListById(id) {
+export async function getListById(id: string) {
   try {
     const res = await axios.get(BASE_URL + `/lists/${id}`);
     return res.data;
@@ -29,7 +29,7 @@ export async function putList(payload) {
   }
 }
 
-export async function deleteList(id) {
+export async function deleteList(id: string) {
   try {
     const res = await axios.delete(BASE_URL + `/lists/${id}`);
     return res.data;
@@ -47,11 +47,11 @@ export async function getOwnedGames() {
   }
 }
 
-export function constructImageURL(appid, hash) {
+export function constructImageURL(appid:number, hash:string) {
   return `http://media.steampowered.com/steamcommunity/public/images/apps/${appid}/${hash}.jpg`;
 }
 
-export function constructStoreURL(appid) {
+export function constructStoreURL(appid:number) {
   return `https://store.steampowered.com/agecheck/app/${appid}/`;
 }
 

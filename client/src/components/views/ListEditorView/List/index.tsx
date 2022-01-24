@@ -1,6 +1,6 @@
 // styles
 import styles from './List.module.css';
-
+import * as React from 'react';
 // libararies
 import { Fragment } from 'react';
 import { IoCaretDown, IoCaretUp, IoTrashBin } from 'react-icons/io5';
@@ -10,9 +10,27 @@ import ListContainer from '../../../containers/lists/ListContainer';
 import ListItem from '../../../containers/lists/ListItemContainer';
 import GameImage from '../../../features/GameImage';
 
-export default function List({ list, onIncrementRank, onDecrementRank, onRemoveGame }) {
+interface gameList {
+  _id: string,
+  name: string,
+  games: any[],
+  ordered: boolean
+}
+
+interface ListProps {
+  list: gameList;
+  onIncrementRank: Function;
+  onDecrementRank: Function;
+  onRemoveGame: Function;
+}
+
+interface rankProps {
+  index: number
+}
+
+const List: React.FC<ListProps> = ({ list, onIncrementRank, onDecrementRank, onRemoveGame }): JSX.Element {
   // render helper functions
-  const RankButtons = ({ index }) => {
+  const RankButtons: React.FC<rankProps> = ({ index }): JSX.Element => {
     return (
       <ul className={styles.rankButtons}>
         {index > 0 ?
@@ -48,3 +66,5 @@ export default function List({ list, onIncrementRank, onDecrementRank, onRemoveG
     </ListContainer>
   );
 }
+
+export default List;
