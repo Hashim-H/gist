@@ -13,7 +13,7 @@ import React = require('react');
 
 
 
-const App: React.FC = () => {
+const App: React.FC = (): JSX.Element => {
   return (
     <Router>
       <Banner />

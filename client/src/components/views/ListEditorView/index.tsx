@@ -1,5 +1,5 @@
 // libraries
-import { useState, useEffect } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 // api
@@ -14,18 +14,31 @@ import Spinner from '../../features/Spinner';
 import GamePicker from './GamePicker';
 import ListOptionForm from './ListOptionForm';
 
-export default function ListEditor() {
+interface gameList {
+  _id: string;
+  name: string;
+  games: any[];
+  ordered: boolean;
+}
+
+interface Game {
+  appid: number;
+  name: string;
+  img_logo_url: string;
+}
+
+const ListEditor: FC = () => {
   // state
-  const [list, setList] = useState({
+  const [list, setList] = useState<gameList>({
     _id: '',
     name: '',
     games: [],
     ordered: false
   });
 
-  const [gamePickerOpen, setGamePickerOpen] = useState(false);
-  const [optionFormOpen, setOptionFormOpen] = useState(false);
-  const { id } = useParams();
+  const [gamePickerOpen, setGamePickerOpen] = useState<boolean>(false);
+  const [optionFormOpen, setOptionFormOpen] = useState<boolean>(false);
+  const { id } = useParams<string>();
 
   useEffect(() => {
     if (id) {
@@ -58,7 +71,7 @@ export default function ListEditor() {
     setList({ ...list, games: newList });
   };
 
-  const onAddGame = game => {
+  const onAddGame = (game: Game) => {
     const newGame = {
       appid: game.appid,
       name: game.name,
@@ -109,3 +122,5 @@ export default function ListEditor() {
     </>
   );
 }
+
+export default ListEditor;
