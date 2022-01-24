@@ -3,8 +3,9 @@ import styles from './Banner.module.css';
 
 // libraries
 import { Link } from 'react-router-dom';
+import * as React from 'react'
 
-export default function Banner() {
+const Banner: React.FC = () => {
   return (
     <div className={styles.banner}>
       <Link className={styles.link} to="/">
@@ -13,3 +14,5 @@ export default function Banner() {
     </div>
   );
 }
+
+export default Banner;
