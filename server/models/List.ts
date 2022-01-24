@@ -1,23 +1,36 @@
-const { model, Schema } = require('mongoose');
+import { Schema, model } from 'mongoose'
 
-const ListSchema = new Schema({
+interface AppId {
+  appId: number
+}
+
+interface LinstInterface {
+  name: string
+  steamid: number
+  games: AppId[]
+  ordered: boolean
+}
+
+const ListSchema = new Schema<LinstInterface>({
   name: {
     type: String,
-    required: true
+    required: true,
   },
   steamid: {
     type: Number,
-    required: true
+    required: true,
   },
-  games: [{
-    appid: Number
-  }],
+  games: [
+    {
+      appid: Number,
+    },
+  ],
   ordered: {
     type: Boolean,
-    required: true
-  }
-});
+    required: true,
+  },
+})
 
-const List = model('List', ListSchema, 'list');
+const List = model<LinstInterface>('List', ListSchema, 'list')
 
-module.exports = List;
+export default List

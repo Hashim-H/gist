@@ -1,52 +1,52 @@
-const ListModel = require('../models/List');
-const { apiUserId } = require('../environment');
-const steam = require('../steam');
+import ListModel from '../models/List'
+import { apiUserId } from '../environment'
+import { getOwnedGamesById } from '../steam'
+import { Request, Response } from 'express'
 
-async function getLists(_, res) {
+async function getLists(_: Request, res: Response) {
   try {
-    const lists = await ListModel.find({ steamid: apiUserId });
+    const lists = await ListModel.find({ steamid: apiUserId })
 
-    res.status(200);
-    res.send(lists);
+    res.status(200)
+    res.send(lists)
   } catch (err) {
-    console.error(err);
-    res.sendStatus(500);
+    console.error(err)
+    res.sendStatus(500)
   }
 }
 
-async function getListById(req, res) {
+async function getListById(req: Request, res: Response) {
   try {
     // get list from database
-    const [list] = await ListModel.find({ _id: req.params.id }).lean();
+    const list = await ListModel.find({ _id: req.params.id }).lean()
 
     // extract appids
-    const appids = list.games.map(game => game.appid);
+    const appids: number[] = list.games.map((game) => game.appId)
 
     // get owned games from api by appid
-    const apiGames = await steam.getOwnedGamesById(appids);
+    const apiGames = await getOwnedGamesById(appids)
 
     // assign additional properties
-    list.games.forEach(game => {
-      const apiData = apiGames.find(apiGame => {
-        return apiGame.appid === game.appid;
-      });
+    list.games.forEach((game) => {
+      const apiData = apiGames.find((apiGame) => {
+        return apiGame.appid === game.appId
+      })
 
-      game.name = apiData.name;
-      game.img_logo_url = apiData.img_logo_url;
-    });
+      game.name = apiData.name
+      game.img_logo_url = apiData.img_logo_url
+    })
 
-    res.status(200);
-    res.send(list);
+    res.status(200)
+    res.send(list)
   } catch (err) {
-    console.error(err);
-    res.sendStatus(500);
+    console.error(err)
+    res.sendStatus(500)
   }
 }
 
-async function putList(req, res) {
-
+async function putList(req: Request, res: Response) {
   // check data
-  const body = req.body;
+  const body = req.body
   if (
     !body.hasOwnProperty('name') ||
     !body.hasOwnProperty('games') ||
@@ -54,49 +54,44 @@ async function putList(req, res) {
     !body.name ||
     !body.games.length
   ) {
-    res.sendStatus(400);
-    return;
+    res.sendStatus(400)
+    return
   }
 
   try {
     // construct update
-    const { _id, name, games, ordered } = req.body;
+    const { _id, name, games, ordered } = req.body
     const update = {
       steamid: apiUserId,
       name,
       games,
-      ordered
-    };
+      ordered,
+    }
 
     // update database
     if (_id) {
-      const filter = { _id };
-      await ListModel.findOneAndUpdate(filter, update);
-      res.sendStatus(200);
+      const filter = { _id }
+      await ListModel.findOneAndUpdate(filter, update)
+      res.sendStatus(200)
     } else {
-      ListModel.create(update);
-      res.sendStatus(201);
+      ListModel.create(update)
+      res.sendStatus(201)
     }
   } catch (err) {
-    console.error(err);
-    res.sendStatus(500);
+    console.error(err)
+    res.sendStatus(500)
   }
 }
 
-async function deleteList(req, res) {
+async function deleteList(req: Request, res: Response) {
   try {
-    const filter = { _id: req.params.id };
-    await ListModel.deleteOne(filter);
-    res.sendStatus(200);
+    const filter = { _id: req.params.id }
+    await ListModel.deleteOne(filter)
+    res.sendStatus(200)
   } catch (err) {
-    console.error(err);
-    res.sendStatus(500);
+    console.error(err)
+    res.sendStatus(500)
   }
 }
 
-module.exports = {
-  getLists,
-  getListById,
-  putList,
-  deleteList
-};
+export { getLists, getListById, putList, deleteList }

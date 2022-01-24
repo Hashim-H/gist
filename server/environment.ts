@@ -1,20 +1,14 @@
 require('dotenv').config()
 
 // server
-const serverPort: number = process.env.SERVER_PORT || 3000
+const serverPort: string | number = process.env.SERVER_PORT || 3000
 
 // database
-const databasePort: number = process.env.DB_PORT || 27017
+const databasePort: string | number = process.env.DB_PORT || 27017
 const databaseName: string = process.env.DB_NAME || 'gist'
 
 // api
-const apiKey: string = process.env.API_KEY
-const apiUserId: number = process.env.API_USER_ID
+const apiKey: string = process.env.API_KEY || 'not present'
+const apiUserId: string | number = process.env.API_USER_ID || 'not present'
 
-module.exports = {
-  serverPort,
-  databasePort,
-  databaseName,
-  apiKey,
-  apiUserId,
-}
+export { serverPort, databasePort, databaseName, apiKey, apiUserId }

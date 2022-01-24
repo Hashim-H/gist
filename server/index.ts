@@ -1,20 +1,22 @@
-const express = require('express')
-const cors = require('cors')
-const router = require('./router')
-const database = require('./models')
-const port = require('./environment').serverPort
+import Express from 'express'
+import router from './router'
+import cors from 'cors'
+import dbConnect from './models'
+import { serverPort } from './environment'
 
 // create server
-const app = express()
+const app = Express()
 
 // middleware
 app.use(cors())
-app.use(express.json())
+app.use(Express.json())
 app.use(router)
 
 try {
-  database.connect()
-  app.listen(port, () => console.log(`server: http://localhost:${port}`))
+  dbConnect()
+  app.listen(serverPort, () =>
+    console.log(`server: http://localhost:${serverPort}`)
+  )
 } catch (err) {
   console.error(err)
 }
