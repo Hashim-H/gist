@@ -9,8 +9,11 @@ import Banner from '../features/Banner';
 import MyListsView from '../views/MyListsView';
 import ListView from '../views/ListView';
 import ListEditorView from '../views/ListEditorView';
+import React = require('react');
 
-export default function App() {
+
+
+const App: React.FC<> = () => {
   return (
     <Router>
       <Banner />
@@ -23,3 +26,5 @@ export default function App() {
     </Router>
   );
 }
+
+export default App;
