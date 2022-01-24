@@ -7,7 +7,7 @@ interface Props {
   children: Element
 }
 
-export default function Modal({ setModalOpen, children }) {
+const Modal: React.FC<Props> = ({ setModalOpen, children }): JSX.Element => {
   const closeModal = () => setModalOpen(false);
 
   return (
@@ -26,3 +26,5 @@ export default function Modal({ setModalOpen, children }) {
     </>
   );
 }
+
+export default Modal;
