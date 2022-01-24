@@ -9,7 +9,7 @@ const app = express()
 
 // middleware
 app.use(cors())
-app.use(express.tson())
+app.use(express.json())
 app.use(router)
 
 try {

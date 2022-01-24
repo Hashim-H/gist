@@ -1,8 +1,11 @@
 {
   "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
     "outDir": "./dist",
-    "allowJs": true,
-    "target": "es5"
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true
   },
-  "include": ["./client/src/**/**/**/**/*", "./server/**/*"]
+  "include": ["./server/**/*"]
 }
