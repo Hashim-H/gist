@@ -4,9 +4,15 @@ import styles from './Form.module.css';
 // libraries
 import { useState, useEffect } from 'react';
 
-export default function Form({ setOptionFormOpen, list, onSaveOptions }) {
+interface Props {
+  setOptionFormOpen: Function;
+  list: gameList;
+  onSaveOptions: Function;
+}
+
+const Form: React.FC<Props> = ({ setOptionFormOpen, list, onSaveOptions }): JSX.Element => {
   // state
-  const [formState, setFormState] = useState({
+  const [formState, setFormState] = useState<gameList>({
     name: '',
     ordered: false
   });
@@ -20,7 +26,7 @@ export default function Form({ setOptionFormOpen, list, onSaveOptions }) {
 
 
     // handler functions
-  const onFormSubmit = event => {
+  const onFormSubmit  = (event) => {
     event.preventDefault();
 
     onSaveOptions({
@@ -31,7 +37,7 @@ export default function Form({ setOptionFormOpen, list, onSaveOptions }) {
     setOptionFormOpen(false);
   };
 
-  const onNameChange = event => {
+  const onNameChange = (event) => {
     setFormState({
       ...formState,
       name: event.target.value
@@ -60,7 +66,7 @@ export default function Form({ setOptionFormOpen, list, onSaveOptions }) {
         name="name"
         id="name"
         placeholder="Enter list name"
-        maxlength="20"
+        maxLength={20}//OC was previously maxlength="20"
         value={formState.name}
         onChange={onNameChange} />
       <label
@@ -82,3 +88,5 @@ export default function Form({ setOptionFormOpen, list, onSaveOptions }) {
     </form>
   );
 }
+
+export default Form;

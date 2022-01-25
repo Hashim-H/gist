@@ -8,7 +8,12 @@ import List from '../../containers/lists/ListContainer';
 import ListItem from '../../containers/lists/ListItemContainer';
 import ListLink from '../../containers/links/ListLinkContainer';
 
-export function AddListButton() {
+interface Props {
+  lists: gameList[];
+}
+
+
+export const AddListButton: React.FC = () => {
   return (
     <IconLink to="/listeditor">
       <IoIosAddCircle />
@@ -16,7 +21,7 @@ export function AddListButton() {
   );
 };
 
-export function MyLists({ lists }) {
+export const MyLists: React.FC<Props> = ({ lists }) => {
   return (
     <List>
       {lists.map(list => {

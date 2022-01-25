@@ -4,7 +4,7 @@ import * as React from 'react'
 
 interface Props {
   setModalOpen: Function;
-  children: Element
+  children: any
 }
 
 const Modal: React.FC<Props> = ({ setModalOpen, children }): JSX.Element => {

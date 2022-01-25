@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 interface Props {
-  ordered: boolean;
-  children: Element
+  ordered?: boolean;
+  children: any
 }
 
 const ListContainer: React.FC<Props> = ({ ordered, children }): JSX.Element => {

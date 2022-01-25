@@ -10,12 +10,7 @@ import ListContainer from '../../../containers/lists/ListContainer';
 import ListItem from '../../../containers/lists/ListItemContainer';
 import GameImage from '../../../features/GameImage';
 
-interface gameList {
-  _id: string,
-  name: string,
-  games: any[],
-  ordered: boolean
-}
+
 
 interface ListProps {
   list: gameList;
@@ -28,7 +23,7 @@ interface rankProps {
   index: number
 }
 
-const List: React.FC<ListProps> = ({ list, onIncrementRank, onDecrementRank, onRemoveGame }): JSX.Element {
+const List: React.FC<ListProps> = ({ list, onIncrementRank, onDecrementRank, onRemoveGame }): JSX.Element => {
   // render helper functions
   const RankButtons: React.FC<rankProps> = ({ index }): JSX.Element => {
     return (

@@ -14,13 +14,6 @@ import Spinner from '../../features/Spinner';
 import GamePicker from './GamePicker';
 import ListOptionForm from './ListOptionForm';
 
-interface gameList {
-  _id: string;
-  name: string;
-  games: Game[];
-  ordered: boolean;
-}
-
 interface Game {
   appid: number;
   name: string;

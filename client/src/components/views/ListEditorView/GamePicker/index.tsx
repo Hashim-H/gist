@@ -11,7 +11,13 @@ import Header from './Header';
 import OwnedGameList from './OwnedGameList';
 
 
-export default function GamePicker({ setGamePickerOpen, listGames, onAddGame }) {
+interface Props {
+  setGamePickerOpen: Function;
+  listGames: Game[];
+  onAddGame: Function;
+}
+
+const GamePicker: React.FC<Props> = ({ setGamePickerOpen, listGames, onAddGame }) => {
   // state
   const [ownedGames, setOwnedGames] = useState([]);
 
@@ -32,3 +38,4 @@ export default function GamePicker({ setGamePickerOpen, listGames, onAddGame }) 
     </Modal>
   );
 }
+export default GamePicker;

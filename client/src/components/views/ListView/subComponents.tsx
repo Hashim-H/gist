@@ -22,7 +22,11 @@ export function EditListButton({ id }) {
   );
 }
 
-export function List({ list }) {
+interface Props {
+  list: gameList;
+}
+
+export const List: React.FC<Props> = ({ list }) => {
   return (
     <ListContainer>
       {list.games.map((game, index) => {
@@ -46,8 +50,14 @@ export function List({ list }) {
   );
 }
 
+
+interface children {
+  appid?: number;
+  children?: any;
+  index?: number;
+}
 // helper functions
-function SteamLink({ appid, children }) {
+const SteamLink: React.FC<children> = ({ appid, children }) => {
   const url = APIService.constructStoreURL(appid);
   return <a
     className={styles.steamLink}
@@ -58,10 +68,10 @@ function SteamLink({ appid, children }) {
     </a>;
 }
 
-function FlexContainer({ children }) {
+const FlexContainer: React.FC<children> = ({ children }) => {
   return <div className={styles.flexContainer}>{children}</div>
 }
 
-function GameRank({ index }) {
+const GameRank: React.FC<children> = ({ index }) => {
   return <span className={styles.gameRank}>{`#${index + 1}`}</span>
 }

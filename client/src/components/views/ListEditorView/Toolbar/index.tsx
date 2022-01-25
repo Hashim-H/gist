@@ -12,8 +12,17 @@ import APIService from '../../../../APIService';
 // components
 import ViewSection from '../../../containers/views/ViewSectionContainer';
 
+interface Props {
+  setOptionFormOpen: Function;
+  list: gameList;
+  setGamePickerOpen: Function;
+}
 
-export default function Toolbar({ list, setOptionFormOpen, setGamePickerOpen }) {
+interface children {
+  children: any
+}
+
+const Toolbar: React.FC<Props> = ({ list, setOptionFormOpen, setGamePickerOpen }) => {
   // button functions
   const navigate = useNavigate();
 
@@ -38,7 +47,7 @@ export default function Toolbar({ list, setOptionFormOpen, setGamePickerOpen }) 
   };
 
   // render helper functions
-  const ListName = ({ children }) => {
+  const ListName: React.FC<children>= ({ children }) => {
     return (
       <h3 className={styles.listName}>
         List Name: <span className={styles.listNameSpan}>{children}</span>
@@ -46,11 +55,11 @@ export default function Toolbar({ list, setOptionFormOpen, setGamePickerOpen }) 
     );
   };
 
-  const IconButtons = ({ children }) => {
+  const IconButtons: React.FC<children> = ({ children }) => {
     return <div className={styles.iconLinks}>{children}</div>;
   };
 
-  const IconButton = ({ children }) => {
+  const IconButton: React.FC<children> = ({ children }) => {
     return <div className={styles.toolButton}>{children}</div>;
   };
 
@@ -68,3 +77,4 @@ export default function Toolbar({ list, setOptionFormOpen, setGamePickerOpen }) 
   );
 }
 
+export default Toolbar;

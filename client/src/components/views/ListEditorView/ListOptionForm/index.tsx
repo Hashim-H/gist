@@ -3,7 +3,14 @@ import Modal from '../../../features/Modal';
 import Header from './Header';
 import Form from './Form';
 
-export default function ListOptionForm({ setOptionFormOpen, list, onSaveOptions }) {
+
+interface Props {
+  setOptionFormOpen: Function;
+  list: gameList;
+  onSaveOptions: Function;
+}
+
+const ListOptionForm: React.FC<Props> = ({ setOptionFormOpen, list, onSaveOptions }): JSX.Element => {
   // render
   return (
     <Modal setModalOpen={setOptionFormOpen}>
@@ -12,3 +19,4 @@ export default function ListOptionForm({ setOptionFormOpen, list, onSaveOptions 
     </Modal>
   );
 }
+export default ListOptionForm;

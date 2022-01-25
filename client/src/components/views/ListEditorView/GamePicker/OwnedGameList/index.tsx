@@ -9,16 +9,16 @@ import List from '../../../../containers/lists/ListContainer';
 import ListItem from '../../../../containers/lists/ListItemContainer';
 import GameImage from '../../../../features/GameImage';
 
+
 interface Props {
   ownedGames: Game[];
   listGames: Game[];
   onAddGame: Function;
 }
 
-interface Game {
-  appid: number;
-  name: string;
-  img_logo_url: string;
+
+interface children {
+  children: any
 }
 const OwnedGameList: React.FC<Props> = ({ ownedGames, listGames, onAddGame }): JSX.Element => {
   // render
@@ -31,9 +31,7 @@ const OwnedGameList: React.FC<Props> = ({ ownedGames, listGames, onAddGame }): J
   );
 }
 
-interface children {
-  children: Element
-}
+
 
 // render helper functions
 const Container: React.FC<children> = ({ children }): JSX.Element => {
@@ -46,8 +44,8 @@ const Container: React.FC<children> = ({ children }): JSX.Element => {
   );
 };
 
-const ListItems: React.FC<Props> = ({ ownedGames, listGames, onAddGame }) => {
-  return ownedGames.map(game => {
+const ListItems: React.FC<Props> = ({ ownedGames, listGames, onAddGame }): JSX.Element => {
+  const mappedGames = ownedGames.map(game => {
     const added = listGames.find(listGame => listGame.appid === game.appid);
 
     return (
@@ -65,5 +63,13 @@ const ListItems: React.FC<Props> = ({ ownedGames, listGames, onAddGame }) => {
       </div>
     );
   });
+  return(
+    // OC added this bit of code from:
+    //https://stackoverflow.com/questions/57651621/type-props-props-element-is-not-assignable-to-type-functioncomponent
+    <React.Fragment>
+     { mappedGames }
+    </React.Fragment>
+  )
 };
 
+export default OwnedGameList;

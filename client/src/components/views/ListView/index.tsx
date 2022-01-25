@@ -11,10 +11,10 @@ import Spinner from '../../features/Spinner';
 import ViewHeader from '../../containers/views/ViewSectionContainer';
 import { EditListButton, List } from './subComponents';
 
-export default function ListView() {
+const ListView: React.FC = () => {
   // state
   const { id } = useParams();
-  const [list, setList] = useState({});
+  const [list, setList] = useState<gameList>();//was useState({})
 
   useEffect(() => {
     (async () => {
@@ -36,3 +36,5 @@ export default function ListView() {
     </View>
   );
 }
+
+export default ListView;

@@ -2,7 +2,7 @@ import styles from './ViewContainer.module.css';
 import * as React from 'react';
 
 interface Props {
-  children: Element
+  children: any
 }
 
 const ViewContainer: React.FC<Props> = ({ children }): JSX.Element=>  {
