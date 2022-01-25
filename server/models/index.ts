@@ -1,8 +1,8 @@
-const mongoose = require('mongoose')
-const { databasePort: number, databaseName: string } = require('../environment')
+import { connect } from 'mongoose'
+import { databasePort, databaseName } from '../environment'
 
-async function connect() {
-  await mongoose.connect(`mongodb://localhost:${databasePort}/${databaseName}`)
+async function dbConnect() {
+  await connect(`mongodb://localhost:${databasePort}/${databaseName}`)
 }
 
-module.exports = { connect }
+export default dbConnect
