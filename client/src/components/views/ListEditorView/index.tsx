@@ -66,12 +66,12 @@ const ListEditor: FC = () => {
     setList({ ...list, games: newList });
   };
 
-  const onRemoveGame = (appid: number) => {
+  const onRemoveGame = (appid: number): void => {
     const newList = [...list.games].filter(game => game.appid !== appid);
     setList({ ...list, games: newList });
   };
 
-  const onAddGame = (game: Game) => {
+  const onAddGame = (game: Game): void => {
     const newGame = {
       appid: game.appid,
       name: game.name,

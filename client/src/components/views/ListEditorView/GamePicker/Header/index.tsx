@@ -1,6 +1,11 @@
 import styles from './Header.module.css';
+import * as React from 'react';
 
-export default function Header({ setGamePickerOpen }) {
+interface Props {
+  setGamePickerOpen: Function;
+}
+
+const Header: React.FC<Props> = ({ setGamePickerOpen }): JSX.Element => {
   return (
     <div className={styles.container}>
       <h3 className={styles.heading}>Pick Games</h3>
@@ -12,3 +17,5 @@ export default function Header({ setGamePickerOpen }) {
     </div>
   );
 };
+
+export default Header;

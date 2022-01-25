@@ -3,13 +3,24 @@ import styles from './OwnedGameList.module.css';
 
 // libraries
 import { IoCheckmark } from 'react-icons/io5';
-
+import * as React from 'react'
 // components
 import List from '../../../../containers/lists/ListContainer';
 import ListItem from '../../../../containers/lists/ListItemContainer';
 import GameImage from '../../../../features/GameImage';
 
-export default function OwnedGameList({ ownedGames, listGames, onAddGame }) {
+interface Props {
+  ownedGames: Game[];
+  listGames: Game[];
+  onAddGame: Function;
+}
+
+interface Game {
+  appid: number;
+  name: string;
+  img_logo_url: string;
+}
+const OwnedGameList: React.FC<Props> = ({ ownedGames, listGames, onAddGame }): JSX.Element => {
   // render
   return (
     <Container>
@@ -20,8 +31,12 @@ export default function OwnedGameList({ ownedGames, listGames, onAddGame }) {
   );
 }
 
+interface children {
+  children: Element
+}
+
 // render helper functions
-function Container ({ children }) {
+const Container: React.FC<children> = ({ children }): JSX.Element => {
   return (
     <div className={styles.containerOuter}>
       <div className={styles.containerInner}>
@@ -31,7 +46,7 @@ function Container ({ children }) {
   );
 };
 
-function ListItems({ ownedGames, listGames, onAddGame }) {
+const ListItems: React.FC<Props> = ({ ownedGames, listGames, onAddGame }) => {
   return ownedGames.map(game => {
     const added = listGames.find(listGame => listGame.appid === game.appid);
 
