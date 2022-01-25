@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
+    "jsx": "react",
     "outDir": "./dist",
     "skipLibCheck": true,
     "strict": true,
@@ -9,5 +10,5 @@
     "forceConsistentCasingInFileNames": true,
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
-  "include": ["./server/**/*"]
+  "include": ["./server/**/*", "./client/**/**/**/**/*"]
 }
