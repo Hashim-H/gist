@@ -5,6 +5,7 @@ interface AppId {
 }
 
 interface LinstInterface {
+  _id?: string;
   name: string
   steamid: number
   games: AppId[]

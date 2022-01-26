@@ -5,15 +5,21 @@ declare type Game = {
     name: string
     playtime_forever?: number
     img_icon_url?: string
-    img_logo_url?: string
+    img_logo_url: string
     has_community_visible_stats?: boolean
     playtime_windows_forever?: number
     playtime_mac_forever?: number
     playtime_linux_forever?: number
 };
 declare type gameList = {
-    _id?: string;
+    _id: string;
     name: string;
-    games?: Game[];
+    games: Game[];
     ordered: boolean;
   }
+
+declare type gameListShort = {
+    name: string;
+    ordered: boolean;
+}
+

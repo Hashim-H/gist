@@ -13,13 +13,15 @@ import { EditListButton, List } from './subComponents';
 
 const ListView: React.FC = () => {
   // state
-  const { id } = useParams();
+  const { id } = useParams()
   const [list, setList] = useState<gameList>();//was useState({})
 
   useEffect(() => {
     (async () => {
-      const fetchedList = await APIService.getListById(id);
-      setList(fetchedList);
+      if (id) {
+        const fetchedList = await APIService.getListById(id);
+        setList(fetchedList);
+      }
     })();
   }, [id]);
 

@@ -64,7 +64,7 @@ const ListEditor: FC = () => {
     setList({ ...list, games: newList });
   };
 
-  const onAddGame = (game: Game): void => {
+  const onAddGame = (game: Game) => {
     const newGame = {
       appid: game.appid,
       name: game.name,
@@ -74,11 +74,11 @@ const ListEditor: FC = () => {
     setList({ ...list, games: [...list.games, newGame] });
   };
 
-  const onSaveOptions = ({ name, ordered }) => {
+  const onSaveOptions = (stateSave: gameListShort) => {
     setList({
       ...list,
-      name: name,
-      ordered: ordered
+      name: stateSave.name,
+      ordered: stateSave.ordered
     });
   };
 

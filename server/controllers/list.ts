@@ -3,6 +3,18 @@ import { apiUserId } from '../environment'
 import { getOwnedGamesById } from '../steam'
 import { Request, Response } from 'express'
 
+interface AppId {
+  appId: number
+}
+
+interface LinstInterface {
+  _id?: string;
+  name: string
+  steamid: number
+  games: Game[]
+  ordered: boolean
+}
+
 async function getLists(_: Request, res: Response) {
   try {
     const lists = await ListModel.find({ steamid: apiUserId })
@@ -18,10 +30,10 @@ async function getLists(_: Request, res: Response) {
 async function getListById(req: Request, res: Response) {
   try {
     // get list from database
-    const list = await ListModel.find({ _id: req.params.id }).lean()
+    const list: LinstInterface = await ListModel.find({ _id: req.params.id }).lean()
 
     // extract appids
-    const appids: number[] = list.games.map((game) => game.appId)
+    const appids: number[] = list.games.map((game) => game.appid)
 
     // get owned games from api by appid
     const apiGames = await getOwnedGamesById(appids)
@@ -29,11 +41,11 @@ async function getListById(req: Request, res: Response) {
     // assign additional properties
     list.games.forEach((game) => {
       const apiData = apiGames.find((apiGame) => {
-        return apiGame.appid === game.appId
+        return apiGame.appid === game.appid
       })
 
-      game.name = apiData.name
-      game.img_logo_url = apiData.img_logo_url
+      game.name = apiData.name 
+      game.img_logo_url = apiData.img_logo_url 
     })
 
     res.status(200)

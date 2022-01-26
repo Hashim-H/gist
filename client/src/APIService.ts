@@ -20,7 +20,7 @@ export async function getListById(id: string) {
   }
 }
 
-export async function putList(payload) {
+export async function putList(payload: gameList) {
   try {
     const res = await axios.put(BASE_URL + '/lists', payload);
     return res.data;

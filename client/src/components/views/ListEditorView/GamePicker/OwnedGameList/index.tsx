@@ -52,7 +52,7 @@ const ListItems: React.FC<Props> = ({ ownedGames, listGames, onAddGame }): JSX.E
       <div
         key={game.appid}
         className={added ? styles.notAllowed : styles.allowed}
-        onClick={added ? null : () => onAddGame(game)}>
+        onClick={added ? () => alert('game is already in your list') : () => onAddGame(game)}>
         <ListItem>
           <div className={styles.flexContainer}>
             <GameImage appid={game.appid} hash={game.img_logo_url} />

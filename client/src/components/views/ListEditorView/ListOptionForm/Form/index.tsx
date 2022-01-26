@@ -12,7 +12,7 @@ interface Props {
 
 const Form: React.FC<Props> = ({ setOptionFormOpen, list, onSaveOptions }): JSX.Element => {
   // state
-  const [formState, setFormState] = useState<gameList>({
+  const [formState, setFormState] = useState<gameListShort>({
     name: '',
     ordered: false
   });
@@ -26,7 +26,7 @@ const Form: React.FC<Props> = ({ setOptionFormOpen, list, onSaveOptions }): JSX.
 
 
     // handler functions
-  const onFormSubmit  = (event) => {
+  const onFormSubmit  = (event: any) => {
     event.preventDefault();
 
     onSaveOptions({
@@ -37,7 +37,7 @@ const Form: React.FC<Props> = ({ setOptionFormOpen, list, onSaveOptions }): JSX.
     setOptionFormOpen(false);
   };
 
-  const onNameChange = (event) => {
+  const onNameChange = (event: any) => {
     setFormState({
       ...formState,
       name: event.target.value

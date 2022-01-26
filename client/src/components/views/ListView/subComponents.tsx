@@ -14,7 +14,12 @@ import ListContainer from '../../containers/lists/ListContainer';
 import ListItem from '../../containers/lists/ListItemContainer';
 import GameImage from '../../features/GameImage';
 
-export function EditListButton({ id }) {
+interface id {
+  id: string;
+}
+
+
+export const EditListButton: React.FC<id> = ( {id} ) => {
   return (
     <IconLink to={`/listeditor/${id}`}>
       <IoPencil />
@@ -50,15 +55,22 @@ export const List: React.FC<Props> = ({ list }) => {
   );
 }
 
+interface onlyChild {
+  children: any;
+}
 
 interface children {
-  appid?: number;
+  appid: number;
   children?: any;
   index?: number;
 }
+
+interface index {
+  index: number;
+}
 // helper functions
 const SteamLink: React.FC<children> = ({ appid, children }) => {
-  const url = APIService.constructStoreURL(appid);
+  const url = APIService.constructStoreURL(appid) 
   return <a
     className={styles.steamLink}
     href={url}
@@ -68,10 +80,10 @@ const SteamLink: React.FC<children> = ({ appid, children }) => {
     </a>;
 }
 
-const FlexContainer: React.FC<children> = ({ children }) => {
+const FlexContainer: React.FC<onlyChild> = ({ children }) => {
   return <div className={styles.flexContainer}>{children}</div>
 }
 
-const GameRank: React.FC<children> = ({ index }) => {
+const GameRank: React.FC<index> = ({ index }) => {
   return <span className={styles.gameRank}>{`#${index + 1}`}</span>
 }
