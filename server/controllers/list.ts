@@ -3,12 +3,20 @@ import { apiUserId } from '../environment'
 import { getOwnedGamesById } from '../steam'
 import { Request, Response } from 'express'
 
-interface AppId {
-  appId: number
+interface Game {
+  appid: number
+  name: string
+  playtime_forever: number
+  img_icon_url: string
+  img_logo_url: string
+  has_community_visible_stats: boolean
+  playtime_windows_forever: number
+  playtime_mac_forever: number
+  playtime_linux_forever: number
 }
 
 interface LinstInterface {
-  _id?: string;
+  _id?: string
   name: string
   steamid: number
   games: Game[]
@@ -30,7 +38,9 @@ async function getLists(_: Request, res: Response) {
 async function getListById(req: Request, res: Response) {
   try {
     // get list from database
-    const list: LinstInterface = await ListModel.find({ _id: req.params.id }).lean()
+    const list: LinstInterface = await ListModel.find({
+      _id: req.params.id,
+    }).lean()
 
     // extract appids
     const appids: number[] = list.games.map((game) => game.appid)
@@ -44,8 +54,10 @@ async function getListById(req: Request, res: Response) {
         return apiGame.appid === game.appid
       })
 
-      game.name = apiData.name 
-      game.img_logo_url = apiData.img_logo_url 
+      if (apiData) {
+        game.name = apiData.name
+        game.img_logo_url = apiData.img_logo_url
+      } else throw new Error('api not found')
     })
 
     res.status(200)
