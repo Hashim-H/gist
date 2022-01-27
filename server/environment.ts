@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 // server
-const serverPort: string | number = process.env.SERVER_PORT || 3000
+const serverPort: string | number = process.env.SERVER_PORT || 8000
 
 // database
 const databasePort: string | number = process.env.DB_PORT || 27017
